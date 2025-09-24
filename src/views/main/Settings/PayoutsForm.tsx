@@ -19,14 +19,31 @@ import LoadingDialog from '@/components/collabberry/custom-components/LoadingDia
 import { useChainService } from '@/services/ChainService'
 import ChainSelector from '@/components/collabberry/custom-components/ChainSelector'
 import RecognitionModeSelector from '@/components/collabberry/custom-components/RecognitionModeSelector'
+import { ethers } from 'ethers'
 
 const validationSchema = Yup.object().shape({
     chain: Yup.string().required('Chain is required'),
-    safeAddress: Yup.string().required('Safe Address is required'),
-    stablecoinAddress: Yup.string().required('Stablecoin Address is required'),
-    recognitionTokenAddress: Yup.string().required(
-        'Recognition Token Address is required'
-    ),
+    safeAddress: Yup.string()
+        .required('Safe Address is required')
+        .test(
+            'is-address',
+            'Invalid address format',
+            (value) => ethers.isAddress(value)
+        ),
+    stablecoinAddress: Yup.string()
+        .required('Stablecoin Address is required')
+        .test(
+            'is-address',
+            'Invalid address format',
+            (value) => ethers.isAddress(value)
+        ),
+    recognitionTokenAddress: Yup.string()
+        .required('Recognition Token Address is required')
+        .test(
+            'is-address',
+            'Invalid address format',
+            (value) => ethers.isAddress(value)
+        ),
     recognitionMode: Yup.string().required('Recognition Mode is required'),
 })
 
@@ -45,6 +62,7 @@ const PayoutsForm = () => {
         stablecoinAddress: organization?.stablecoinAddress || '',
         recognitionTokenAddress: organization?.recognitionTokenAddress || '',
         recognitionMode: organization?.recognitionMode || '',
+        chainId: organization?.chainId || 0,
     }
 
     const onFormSubmit = async (
@@ -54,6 +72,7 @@ const PayoutsForm = () => {
             stablecoinAddress: string
             recognitionTokenAddress: string
             recognitionMode: string
+            chainId: number
         },
         setSubmitting: (isSubmitting: boolean) => void
     ) => {
@@ -65,6 +84,7 @@ const PayoutsForm = () => {
                 stablecoinAddress: values.stablecoinAddress,
                 recognitionTokenAddress: values.recognitionTokenAddress,
                 recognitionMode: values.recognitionMode as any,
+                chainId: values.chainId,
             }
             const result = await apiUpdateOrganizationSettings(data)
             if (result.status === 'success') {
@@ -130,6 +150,7 @@ const PayoutsForm = () => {
                                     value={values.chain}
                                     onChange={(option) => {
                                         setFieldValue('chain', option.value)
+                                        setFieldValue('chainId', option.chainId)
                                     }}
                                 />
                             </FormItem>

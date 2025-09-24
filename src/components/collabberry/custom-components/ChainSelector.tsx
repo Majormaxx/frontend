@@ -3,12 +3,13 @@ import { Select } from '@/components/ui';
 type Option = {
     value: string;
     label: string;
+    chainId: number;
 };
 
 const options: Option[] = [
-    { value: 'ethereum', label: 'Ethereum' },
-    { value: 'arbitrum', label: 'Arbitrum' },
-    { value: 'sepolia', label: 'Sepolia' },
+    { value: 'ethereum', label: 'Ethereum', chainId: 1 },
+    { value: 'arbitrum', label: 'Arbitrum', chainId: 42161 },
+    { value: 'sepolia', label: 'Sepolia', chainId: 11155111 },
 ];
 
 type ChainSelectorProps = {

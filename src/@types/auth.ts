@@ -48,9 +48,10 @@ export type OrganizationData = {
     stablecoinAddress?: string
     recognitionTokenAddress?: string
     recognitionMode?: 'hours-based' | 'discretionary'
+    chainId?: number
 }
 
-export type Assessment = {
+export type User = {
   contributorId: string;
   cultureScore: number;
   workScore: number;
