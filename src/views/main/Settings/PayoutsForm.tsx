@@ -20,8 +20,9 @@ import { useChainService } from '@/services/ChainService'
 import ChainSelector from '@/components/collabberry/custom-components/ChainSelector'
 import RecognitionModeSelector from '@/components/collabberry/custom-components/RecognitionModeSelector'
 import { ethers } from 'ethers'
+import { isContract } from '@/services/ValidationService'
 
-const validationSchema = Yup.object().shape({
+const validationSchema = (chainId: number) => Yup.object().shape({
     chain: Yup.string().required('Chain is required'),
     safeAddress: Yup.string()
         .required('Safe Address is required')
@@ -29,6 +30,10 @@ const validationSchema = Yup.object().shape({
             'is-address',
             'Invalid address format',
             (value) => ethers.isAddress(value)
+        ).test(
+            'is-contract',
+            'Address is not a contract',
+            async (value) => isContract(value as string, chainId)
         ),
     stablecoinAddress: Yup.string()
         .required('Stablecoin Address is required')
@@ -36,6 +41,10 @@ const validationSchema = Yup.object().shape({
             'is-address',
             'Invalid address format',
             (value) => ethers.isAddress(value)
+        ).test(
+            'is-contract',
+            'Address is not a contract',
+            async (value) => isContract(value as string, chainId)
         ),
     recognitionTokenAddress: Yup.string()
         .required('Recognition Token Address is required')
@@ -43,6 +52,10 @@ const validationSchema = Yup.object().shape({
             'is-address',
             'Invalid address format',
             (value) => ethers.isAddress(value)
+        ).test(
+            'is-contract',
+            'Address is not a contract',
+            async (value) => isContract(value as string, chainId)
         ),
     recognitionMode: Yup.string().required('Recognition Mode is required'),
 })
@@ -133,7 +146,7 @@ const PayoutsForm = () => {
             />
             <Formik
                 initialValues={initialValues}
-                validationSchema={validationSchema}
+                validationSchema={validationSchema(initialValues.chainId)}
                 onSubmit={(values, { setSubmitting }) => {
                     onFormSubmit(values, setSubmitting)
                 }}
