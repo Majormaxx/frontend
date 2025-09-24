@@ -35,15 +35,19 @@ export type RegisterCredential = {
 };
 
 export type OrganizationData = {
-  id?: string;
-  par?: number;
-  compensationStartDay?: string;
-  assessmentStartDelayInDays?: number;
-  assessmentDurationInDays?: number
-  compensationPeriod?: number;
-  name: string;
-  logo?: string;
-};
+    id?: string
+    par?: number
+    compensationStartDay?: string
+    assessmentStartDelayInDays?: number
+    assessmentDurationInDays?: number
+    compensationPeriod?: number
+    name: string
+    logo?: string
+    chain?: 'arbitrum' | 'sepolia'
+    safeAddress?: string
+    stablecoinAddress?: string
+    recognitionTokenAddress?: string
+}
 
 export type Assessment = {
   contributorId: string;

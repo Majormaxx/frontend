@@ -149,6 +149,14 @@ export async function apiAddTxHashToRound(roundId: string, data: any) {
   });
 }
 
+export async function apiUpdateOrganizationSettings(data: Partial<OrganizationData>) {
+    return ApiService.fetchData<any>({
+        url: '/orgs/settings',
+        method: 'put',
+        data,
+    })
+}
+
 export async function apiEditOrganization(data: OrganizationData) {
   const formData = new FormData();
   Object.keys(data).forEach((key) => {
