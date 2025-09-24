@@ -47,6 +47,7 @@ export type OrganizationData = {
     safeAddress?: string
     stablecoinAddress?: string
     recognitionTokenAddress?: string
+    recognitionMode?: 'hours-based' | 'discretionary'
 }
 
 export type Assessment = {

@@ -13,59 +13,104 @@ import { useSelector } from 'react-redux'
 import * as Yup from 'yup'
 import { RootState } from '@/store'
 import { OrganizationData } from '@/@types/auth'
+import SuccessDialog from '@/components/collabberry/custom-components/TransactionSuccessDialog'
+import ErrorDialog from '@/components/collabberry/custom-components/TransactionErrorDialog'
+import LoadingDialog from '@/components/collabberry/custom-components/LoadingDialog'
+import { useChainService } from '@/services/ChainService'
+import ChainSelector from '@/components/collabberry/custom-components/ChainSelector'
+import RecognitionModeSelector from '@/components/collabberry/custom-components/RecognitionModeSelector'
 
 const validationSchema = Yup.object().shape({
+    chain: Yup.string().required('Chain is required'),
     safeAddress: Yup.string().required('Safe Address is required'),
     stablecoinAddress: Yup.string().required('Stablecoin Address is required'),
-    recognitionTokenAddress: Yup.string().required('Recognition Token Address is required'),
+    recognitionTokenAddress: Yup.string().required(
+        'Recognition Token Address is required'
+    ),
+    recognitionMode: Yup.string().required('Recognition Mode is required'),
 })
 
 const PayoutsForm = () => {
-    const [message, setMessage] = useState('')
+    const [dialogVisible, setDialogVisible] = useState(false)
+    const [errorDialogVisible, setErrorDialogVisible] = useState(false)
+    const [loadingDialog, setLoadingDialog] = useState(false)
+    const [errorMessage, setErrorMessage] = useState('')
+    const { network, blockExplorer } = useChainService()
 
     const organization = useSelector((state: RootState) => state.auth.org)
 
     const initialValues = {
+        chain: organization?.chain || '',
         safeAddress: organization?.safeAddress || '',
         stablecoinAddress: organization?.stablecoinAddress || '',
         recognitionTokenAddress: organization?.recognitionTokenAddress || '',
+        recognitionMode: organization?.recognitionMode || '',
     }
 
     const onFormSubmit = async (
         values: {
+            chain: string
             safeAddress: string
             stablecoinAddress: string
             recognitionTokenAddress: string
+            recognitionMode: string
         },
         setSubmitting: (isSubmitting: boolean) => void
     ) => {
-        setMessage('')
+        setLoadingDialog(true)
         try {
             const data: Partial<OrganizationData> = {
+                chain: values.chain,
                 safeAddress: values.safeAddress,
                 stablecoinAddress: values.stablecoinAddress,
                 recognitionTokenAddress: values.recognitionTokenAddress,
+                recognitionMode: values.recognitionMode as any,
             }
             const result = await apiUpdateOrganizationSettings(data)
             if (result.status === 'success') {
-                setMessage('Settings updated successfully.')
+                setDialogVisible(true)
             } else {
-                setMessage('Failed to update settings.')
+                setErrorMessage('Failed to update settings.')
+                setErrorDialogVisible(true)
             }
         } catch (error) {
-            setMessage('An error occurred.')
+            setErrorMessage('An error occurred.')
+            setErrorDialogVisible(true)
         } finally {
+            setLoadingDialog(false)
             setSubmitting(false)
         }
     }
 
+    const handleDialogClose = () => {
+        setDialogVisible(false)
+    }
+
+    const handleErrorDialogClose = () => {
+        setErrorDialogVisible(false)
+    }
+
     return (
         <div>
-            {message && (
-                <Alert showIcon className="mb-4" type={message.includes('successfully') ? 'success' : 'danger'}>
-                    {message}
-                </Alert>
-            )}
+            <SuccessDialog
+                dialogVisible={dialogVisible}
+                txHash={''}
+                blockExplorer={blockExplorer}
+                txNetwork={network}
+                dialogMessage="Yay! Your settings have been updated."
+                handleDialogClose={handleDialogClose}
+            ></SuccessDialog>
+            <ErrorDialog
+                dialogVisible={errorDialogVisible}
+                errorMessage={errorMessage}
+                handleDialogClose={handleErrorDialogClose}
+            ></ErrorDialog>
+            <LoadingDialog
+                dialogVisible={loadingDialog}
+                message={'This might take a while, so please be patient.'}
+                title="Updating Settings..."
+                handleDialogClose={() => null}
+            />
             <Formik
                 initialValues={initialValues}
                 validationSchema={validationSchema}
@@ -73,9 +118,21 @@ const PayoutsForm = () => {
                     onFormSubmit(values, setSubmitting)
                 }}
             >
-                {({ errors, touched, isSubmitting }) => (
+                {({ errors, touched, isSubmitting, setFieldValue, values }) => (
                     <Form>
                         <FormContainer>
+                            <FormItem
+                                label="Chain"
+                                invalid={errors.chain && touched.chain}
+                                errorMessage={errors.chain}
+                            >
+                                <ChainSelector
+                                    value={values.chain}
+                                    onChange={(option) => {
+                                        setFieldValue('chain', option.value)
+                                    }}
+                                />
+                            </FormItem>
                             <FormItem
                                 label="Safe Address"
                                 invalid={errors.safeAddress && touched.safeAddress}
@@ -119,6 +176,18 @@ const PayoutsForm = () => {
                                     name="recognitionTokenAddress"
                                     placeholder="Enter Recognition Token Address"
                                     component={Input}
+                                />
+                            </FormItem>
+                            <FormItem
+                                label="Recognition Mode"
+                                invalid={errors.recognitionMode && touched.recognitionMode}
+                                errorMessage={errors.recognitionMode}
+                            >
+                                <RecognitionModeSelector
+                                    value={values.recognitionMode}
+                                    onChange={(option) => {
+                                        setFieldValue('recognitionMode', option.value)
+                                    }}
                                 />
                             </FormItem>
                             <FormItem>
