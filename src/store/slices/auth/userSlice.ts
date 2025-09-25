@@ -10,6 +10,7 @@ export type UserState = {
   authority?: string[];
   isAdmin?: boolean;
   isContractAdmin?: boolean;
+  isMinter?: boolean;
   totalFiat?: string;
   organization?: any
 };
@@ -23,6 +24,7 @@ const initialState: UserState = {
   authority: [],
   isAdmin: false,
   isContractAdmin: false,
+  isMinter: false,
   totalFiat: '',
   organization: null
 };
@@ -52,6 +54,7 @@ const userSlice = createSlice({
       state.id = action.payload?.id;
       state.isAdmin = action.payload?.isAdmin;
       state.isContractAdmin = action.payload?.isContractAdmin;
+      state.isMinter = action.payload?.isMinter;
       state.totalFiat = action.payload?.totalFiat;
       state.organization = action.payload?.organization;
     },

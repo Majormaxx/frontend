@@ -83,6 +83,12 @@ export const protectedRoutes = [
     authority: [],
   },
   {
+    key: "org.settings.admin",
+    path: "/settings/admin",
+    component: lazy(() => import("@/views/main/Settings/AdminSettings")),
+    authority: [],
+  },
+  {
     key: "org.rounds",
     path: "/rounds",
     component: lazy(() => import("@/views/main/Rounds/Rounds")),
@@ -101,4 +107,3 @@ export const protectedRoutes = [
     authority: [],
   },
 ];
-

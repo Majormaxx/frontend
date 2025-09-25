@@ -72,6 +72,7 @@ function useAuth() {
           dispatch(signInSuccess(token));
         }
 
+        const isMinter = await checkIsAdmin(user.id);
         dispatch(
           setUser({
             profilePicture: user?.profilePicture,
@@ -81,6 +82,7 @@ function useAuth() {
             telegramHandle: user?.telegramHandle,
             id: user?.id,
             isAdmin: user?.isAdmin,
+            isMinter,
             totalFiat: user?.totalFiat,
             organization: user?.organization,
           })

@@ -1,11 +1,4 @@
-import {
-    FormItem,
-    FormContainer,
-    Input,
-    Button,
-    Alert,
-    Spinner,
-} from '@/components/ui'
+import {FormItem,FormContainer,Input, Button, Alert, Spinner,} from '@/components/ui'
 import { apiUpdateOrganizationSettings } from '@/services/OrgService'
 import { Field, Form, Formik } from 'formik'
 import { useState } from 'react'
@@ -20,44 +13,67 @@ import { useChainService } from '@/services/ChainService'
 import ChainSelector from '@/components/collabberry/custom-components/ChainSelector'
 import RecognitionModeSelector from '@/components/collabberry/custom-components/RecognitionModeSelector'
 import { ethers } from 'ethers'
-import { isContract } from '@/services/ValidationService'
+import { hasMinterRole, isContract } from '@/services/ValidationService'
 
-const validationSchema = (chainId: number) => Yup.object().shape({
+const validationSchema = Yup.object().shape({
     chain: Yup.string().required('Chain is required'),
     safeAddress: Yup.string()
         .required('Safe Address is required')
+        .test('is-address', 'Invalid address format', (value) =>
+            ethers.isAddress(value)
+        )
         .test(
-            'is-address',
-            'Invalid address format',
-            (value) => ethers.isAddress(value)
-        ).test(
             'is-contract',
             'Address is not a contract',
-            async (value) => isContract(value as string, chainId)
+            async function (value) {
+                const { chainId } = this.parent
+                if (!value || !chainId) return true
+                return isContract(value as string, chainId)
+            }
+        )
+        .test(
+            'has-minter-role',
+            'Address does not have the minter role',
+            async function (value) {
+                const { chainId, recognitionTokenAddress } = this.parent
+                if (!value || !chainId || !recognitionTokenAddress) return true
+                return hasMinterRole(
+                    value as string,
+                    recognitionTokenAddress,
+                    chainId
+                )
+            }
         ),
     stablecoinAddress: Yup.string()
         .required('Stablecoin Address is required')
+        .test('is-address', 'Invalid address format', (value) =>
+            ethers.isAddress(value)
+        )
         .test(
-            'is-address',
-            'Invalid address format',
-            (value) => ethers.isAddress(value)
-        ).test(
             'is-contract',
             'Address is not a contract',
-            async (value) => isContract(value as string, chainId)
+            async function (value) {
+                const { chainId } = this.parent
+                if (!value || !chainId) return true
+                return isContract(value as string, chainId)
+            }
         ),
     recognitionTokenAddress: Yup.string()
         .required('Recognition Token Address is required')
+        .test('is-address', 'Invalid address format', (value) =>
+            ethers.isAddress(value)
+        )
         .test(
-            'is-address',
-            'Invalid address format',
-            (value) => ethers.isAddress(value)
-        ).test(
             'is-contract',
             'Address is not a contract',
-            async (value) => isContract(value as string, chainId)
+            async function (value) {
+                const { chainId } = this.parent
+                if (!value || !chainId) return true
+                return isContract(value as string, chainId)
+            }
         ),
     recognitionMode: Yup.string().required('Recognition Mode is required'),
+    chainId: Yup.number(),
 })
 
 const PayoutsForm = () => {
@@ -67,7 +83,7 @@ const PayoutsForm = () => {
     const [errorMessage, setErrorMessage] = useState('')
     const { network, blockExplorer } = useChainService()
 
-    const organization = useSelector((state: RootState) => state.auth.org)
+    const organization = useSelector((state: RootState) => state.auth.org) as OrganizationData
 
     const initialValues = {
         chain: organization?.chain || '',
@@ -92,7 +108,7 @@ const PayoutsForm = () => {
         setLoadingDialog(true)
         try {
             const data: Partial<OrganizationData> = {
-                chain: values.chain,
+                chain: values.chain as 'arbitrum' | 'sepolia',
                 safeAddress: values.safeAddress,
                 stablecoinAddress: values.stablecoinAddress,
                 recognitionTokenAddress: values.recognitionTokenAddress,
@@ -100,7 +116,7 @@ const PayoutsForm = () => {
                 chainId: values.chainId,
             }
             const result = await apiUpdateOrganizationSettings(data)
-            if (result.status === 'success') {
+            if (result.status < 300) {
                 setDialogVisible(true)
             } else {
                 setErrorMessage('Failed to update settings.')
@@ -146,7 +162,7 @@ const PayoutsForm = () => {
             />
             <Formik
                 initialValues={initialValues}
-                validationSchema={validationSchema(initialValues.chainId)}
+                validationSchema={validationSchema}
                 onSubmit={(values, { setSubmitting }) => {
                     onFormSubmit(values, setSubmitting)
                 }}
