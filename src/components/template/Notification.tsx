@@ -181,7 +181,7 @@ const _Notification = ({ className }: { className?: string }) => {
             onOpen={onNotificationOpen}
         >
             <Dropdown.Item variant="header">
-                <div className="border-b border-gray-200 dark:border-gray-600 px-4 py-2 flex items-center justify-between">
+                <div className="flex items-center justify-between border-b border-gray-200 px-4 py-2 dark:border-gray-600">
                     <h6>Notifications</h6>
                     <Tooltip title="Mark all as read">
                         <Button
@@ -200,7 +200,7 @@ const _Notification = ({ className }: { className?: string }) => {
                         notificationList.map((item, index) => (
                             <div
                                 key={item.id}
-                                className={`relative flex px-4 py-4 cursor-pointer hover:bg-gray-50 active:bg-gray-100 dark:hover:bg-black dark:hover:bg-opacity-20  ${
+                                className={`relative flex cursor-pointer px-4 py-4 hover:bg-gray-50 active:bg-gray-100 dark:hover:bg-black dark:hover:bg-opacity-20  ${
                                     !isLastChild(notificationList, index)
                                         ? 'border-b border-gray-200 dark:border-gray-600'
                                         : ''
@@ -211,7 +211,7 @@ const _Notification = ({ className }: { className?: string }) => {
                                 <div className="ltr:ml-3 rtl:mr-3">
                                     <div>
                                         {item.target && (
-                                            <span className="font-semibold heading-text">
+                                            <span className="heading-text font-semibold">
                                                 {item.target}{' '}
                                             </span>
                                         )}
@@ -220,7 +220,7 @@ const _Notification = ({ className }: { className?: string }) => {
                                     <span className="text-xs">{item.date}</span>
                                 </div>
                                 <Badge
-                                    className="absolute top-4 ltr:right-4 rtl:left-4 mt-1.5"
+                                    className="absolute top-4 mt-1.5 ltr:right-4 rtl:left-4"
                                     innerClass={`${
                                         item.readed ? 'bg-gray-300' : bgTheme
                                     } `}
@@ -260,10 +260,10 @@ const _Notification = ({ className }: { className?: string }) => {
                 </ScrollBar>
             </div>
             <Dropdown.Item variant="header">
-                <div className="flex justify-center border-t border-gray-200 dark:border-gray-600 px-4 py-2">
+                <div className="flex justify-center border-t border-gray-200 px-4 py-2 dark:border-gray-600">
                     <Link
                         to="/app/account/activity-log"
-                        className="font-semibold cursor-pointer p-2 px-3 text-gray-600 hover:text-gray-900 dark:text-gray-200 dark:hover:text-white"
+                        className="cursor-pointer p-2 px-3 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-200 dark:hover:text-white"
                     >
                         View All Activity
                     </Link>

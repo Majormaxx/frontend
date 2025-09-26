@@ -28,7 +28,7 @@ const ConfirmationDialog: React.FC<ConfirmationDialogProps> = ({
                 <div>{dialogMessage} </div>
               
             </div>
-            <div className="text-right px-6 py-3 rounded-bl-lg rounded-br-lg">
+            <div className="rounded-bl-lg rounded-br-lg px-6 py-3 text-right">
                 <Button
                     className="ltr:mr-2 rtl:ml-2"
                     onClick={handleDialogClose}

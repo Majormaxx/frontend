@@ -169,7 +169,7 @@ const CalendarView = (props: CalendarViewProps) => {
                             {!(isEnd && !isStart) && (
                                 <span>{arg.timeText}</span>
                             )}
-                            <span className="font-semibold ml-1 rtl:mr-1">
+                            <span className="ml-1 font-semibold rtl:mr-1">
                                 {arg.event.title}
                             </span>
                         </div>

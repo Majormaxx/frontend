@@ -83,13 +83,13 @@ const SignIn = () => {
           <h3 className="mb-1">Welcome to the land of berries!</h3>
         </div>
 
-        <div className="flex justify-center mb-8">
+        <div className="mb-8 flex justify-center">
           <CustomConnectButton disabled={!isChecked} />
         </div>
 
         <div className="flex items-start">
           <Checkbox checked={isChecked} onChange={onCheckboxChange} />
-          <div className="text-sm flex flex-row space-x-1">
+          <div className="flex flex-row space-x-1 text-sm">
             <span>I agree to the</span>
             <div
               onClick={openTermsAndConditions}

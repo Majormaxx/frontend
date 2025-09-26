@@ -16,7 +16,7 @@ const MintStatusTag: React.FC<MintStatusTagProps> = ({ minted }) => {
     const status = getStatusTextAndColor(minted);
 
     return (
-        <Tag className={`text-${status.color}-500 bg-${status.color}-50 border-0 h-6`}>
+        <Tag className={`text-${status.color}-500 bg-${status.color}-50 h-6 border-0`}>
             {status.text}
         </Tag>
     );

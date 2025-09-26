@@ -80,8 +80,8 @@ const SignUpWithInviteLink = () => {
         const response = await apiRegisterAccount(data);
         if (response?.data) {
           try {
-            let response: any = await apiGetUser();
-            let user = response?.data || {};
+            const response: any = await apiGetUser();
+            const user = response?.data || {};
             if (user) {
               if (user?.organization?.id) {
                 try {
@@ -145,7 +145,7 @@ const SignUpWithInviteLink = () => {
       </div>
       {invitationToken && (
         <Card
-          className="relative z-10 w-full md:w-[600px] min-h-[500px]"
+          className="relative z-10 min-h-[500px] w-full md:w-[600px]"
           bodyClass="md:p-10"
         >
           <div>
@@ -166,7 +166,7 @@ const SignUpWithInviteLink = () => {
 
             <form onSubmit={formik.handleSubmit}>
               <FormContainer>
-                <h2 className="text-2xl font-bold mb-4 mt-4">
+                <h2 className="mb-4 mt-4 text-2xl font-bold">
                   Create Your Profile
                 </h2>
 
@@ -191,7 +191,7 @@ const SignUpWithInviteLink = () => {
                     value={formik.values.username}
                   />
                 </FormItem>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                   <FormItem label="Email"
                     invalid={
                       formik.touched?.email && !!formik.errors?.email

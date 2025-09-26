@@ -64,8 +64,8 @@ export const AgreementForm: React.FC<Props> = ({
   return (
     <FormContainer>
       {/* Role Summary */}
-      <div className="bg-muted/40 p-4 rounded-lg mb-4">
-        <h3 className="font-medium mb-2">Role Summary</h3>
+      <div className="bg-muted/40 mb-4 rounded-lg p-4">
+        <h3 className="mb-2 font-medium">Role Summary</h3>
         <p className="mb-2">
           <strong>Role:</strong> {suggestions.role}
         </p>
@@ -179,7 +179,7 @@ export const AgreementForm: React.FC<Props> = ({
             Create Agreement
           </Button>
 
-          <div className="text-center text-xs text-muted-foreground">
+          <div className="text-muted-foreground text-center text-xs">
             Having trouble? Make sure all fields are filled out correctly.
           </div>
         </div>

@@ -302,7 +302,7 @@ const DateTimepicker = forwardRef<HTMLInputElement, DateTimepickerProps>(
                     onMonthChange={setCalendarMonth}
                     onChange={handleValueChange}
                 />
-                <div className="flex items-center gap-4 mt-4">
+                <div className="mt-4 flex items-center gap-4">
                     <TimeInput
                         disabled={!_value}
                         value={_value}

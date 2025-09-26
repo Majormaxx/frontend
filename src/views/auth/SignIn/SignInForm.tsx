@@ -109,7 +109,7 @@ const SignInForm = (props: SignInFormProps) => {
                   component={PasswordInput}
                 />
               </FormItem>
-              <div className="flex justify-between mb-6">
+              <div className="mb-6 flex justify-between">
                 <Field className="mb-0" name="rememberMe" component={Checkbox}>
                   Remember Me
                 </Field>

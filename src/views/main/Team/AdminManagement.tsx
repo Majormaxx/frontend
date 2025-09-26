@@ -14,7 +14,7 @@ import { HiArrowSmLeft, HiPlus } from 'react-icons/hi';
 import { useNavigate } from 'react-router-dom';
 import AddAdminForm from './AddAdminForm';
 import { FiTrash } from 'react-icons/fi';
-import { Contributor } from '@/models/Organization.model';
+import { Contributor } from "../../../models/organization.model";
 import ConfirmationDialog from '@/components/collabberry/custom-components/ConfirmationDialog';
 import { ethers } from 'ethers';
 import { refreshUser } from '@/services/LoadAndDispatchService';
@@ -160,7 +160,7 @@ const AdminManagement: React.FC = () => {
                                                 <img
                                                     src={contributor?.profilePicture ?? placeholderIcon
                                                     }
-                                                    className="rounded-full object-cover h-10 w-10"
+                                                    className="h-10 w-10 rounded-full object-cover"
                                                     alt="contributor profile picture"
                                                 />
 

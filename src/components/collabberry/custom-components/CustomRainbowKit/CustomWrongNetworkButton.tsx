@@ -42,7 +42,7 @@ export const CustomWrongNetworkButton: React.FC<CustomConnectButtonProps> = ({
 
               if (connected && chain && chain.unsupported) {
                 return (
-                  <button onClick={openChainModal} type="button" className="button bg-transparent text-red-500 radius-round h-9 px-3 py-2 text-sm">
+                  <button onClick={openChainModal} type="button" className="button radius-round h-9 bg-transparent px-3 py-2 text-sm text-red-500">
                     Wrong network
                   </button>
                 );

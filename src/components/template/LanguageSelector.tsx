@@ -80,7 +80,7 @@ const _LanguageSelector = ({ className }: CommonProps) => {
                         <span className="ltr:ml-2 rtl:mr-2">{lang.label}</span>
                     </span>
                     {locale === lang.value && (
-                        <HiCheck className="text-emerald-500 text-lg" />
+                        <HiCheck className="text-lg text-emerald-500" />
                     )}
                 </Dropdown.Item>
             ))}

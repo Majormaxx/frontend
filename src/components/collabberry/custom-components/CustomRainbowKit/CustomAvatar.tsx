@@ -11,7 +11,7 @@ const CustomAvatar: any = () => {
   return (
     <img
       src={profilePicture ?? placeholderIcon}
-      className="rounded-full object-cover h-20 w-20"
+      className="h-20 w-20 rounded-full object-cover"
     />
   )
 };

@@ -1,5 +1,5 @@
 const SingleMenuView = () => {
-  return <div className="flex flex-col items-center h-screen"></div>;
+  return <div className="flex h-screen flex-col items-center"></div>;
 };
 
 export default SingleMenuView;

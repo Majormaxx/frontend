@@ -20,7 +20,7 @@ export const StatRow = ({ icon, label, value, valueSuffix, extraClasses, classNa
     <div>
       <p>{label}</p>
       <h5>
-        <span className="leading-none mr-0.5">{value}</span>
+        <span className="mr-0.5 leading-none">{value}</span>
         <span className="text-sm leading-none">{valueSuffix}</span>
       </h5>
     </div>

@@ -154,9 +154,9 @@ const AddAgreementForm: React.FC<AddAgreementFormProps> = ({
       {contributor && (
         <>
           <FormContainer
-            className="xl:max-h-[750px] max-h-[420px] overflow-y-auto"
+            className="max-h-[420px] overflow-y-auto xl:max-h-[750px]"
           >
-            <h2 className="text-2xl font-bold mb-4 mt-4">
+            <h2 className="mb-4 mt-4 text-2xl font-bold">
               {hasAgreement ? 'Edit ' : 'Add '} Agreement for {contributor?.username}
             </h2>
             <FormItem
@@ -207,15 +207,15 @@ const AddAgreementForm: React.FC<AddAgreementFormProps> = ({
                 value={formik.values.commitment}
               />
             </FormItem>
-            <div className="flex items-center mb-4">
+            <div className="mb-4 flex items-center">
               <span className="font-bold">Compensation</span>
               <Tooltip
                 title={
                   <div>
-                    <div className="font-bold text-gray-300 mb-2">
+                    <div className="mb-2 font-bold text-gray-300">
                       Calculation Example
                     </div>
-                    <div className="text-gray-300 font-normal">
+                    <div className="font-normal text-gray-300">
                       <div>
                         Total Compensation = Market Rate ($3,000.00) * Commitment
                         (75%) = $2,250.00
@@ -229,13 +229,13 @@ const AddAgreementForm: React.FC<AddAgreementFormProps> = ({
                   </div>
                 }
               >
-                <div className="relative group text-berrylavender-400">
-                  <HiOutlineQuestionMarkCircle className="text-lg cursor-pointer ml-1" />{" "}
+                <div className="group relative text-berrylavender-400">
+                  <HiOutlineQuestionMarkCircle className="ml-1 cursor-pointer text-lg" />{" "}
                 </div>
               </Tooltip>
             </div>
-            <div className="mb-4 flex-row flex justify-start items-center bg-berrylavender-100 dark:bg-berrylavender-700 gap-1 p-2 rounded-lg">
-              <div className="text-berrylavender-700 dark:text-white font-semibold">
+            <div className="mb-4 flex flex-row items-center justify-start gap-1 rounded-lg bg-berrylavender-100 p-2 dark:bg-berrylavender-700">
+              <div className="font-semibold text-berrylavender-700 dark:text-white">
                 {formik.values.commitment &&
                   !formik.errors.commitment &&
                   formik.values.marketRate &&
@@ -247,7 +247,7 @@ const AddAgreementForm: React.FC<AddAgreementFormProps> = ({
                   : "Please input commitment and market rate to calculate the total compensation."}
               </div>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <FormItem
                 asterisk
                 label="Market Rate (per month)"
@@ -286,7 +286,7 @@ const AddAgreementForm: React.FC<AddAgreementFormProps> = ({
               </FormItem>
             </div>
           </FormContainer>
-          <div className="flex justify-end mt-4 gap-4">
+          <div className="mt-4 flex justify-end gap-4">
             <Button type="button" onClick={() => handleClose()}>
               Cancel
             </Button>

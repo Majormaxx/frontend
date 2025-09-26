@@ -187,8 +187,8 @@ const SignUp = () => {
           },
         });
         try {
-          let response: any = await apiGetUser();
-          let user = response?.data || {};
+          const response: any = await apiGetUser();
+          const user = response?.data || {};
           if (user) {
             dispatch(
               setUser({
@@ -273,8 +273,8 @@ const SignUp = () => {
             }
 
             try {
-              let response: any = await apiGetUser();
-              let user = response?.data || {};
+              const response: any = await apiGetUser();
+              const user = response?.data || {};
               if (user) {
                 dispatch(
                   setUser({
@@ -449,7 +449,7 @@ const SignUp = () => {
       case 0:
         return (
           <FormContainer>
-            <h2 className="text-2xl font-bold mb-4 mt-4">
+            <h2 className="mb-4 mt-4 text-2xl font-bold">
               Create Your Admin Profile
             </h2>
 
@@ -482,7 +482,7 @@ const SignUp = () => {
                 value={formik.values.step1.username}
               />
             </FormItem>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
               <FormItem
                 label="Email"
                 asterisk
@@ -522,19 +522,19 @@ const SignUp = () => {
               isOpen={dialogOpen}
               closable={false}
             >
-              <div className=" flex flex-col items-center justify-center p-2 min-h-[200px] relative">
+              <div className=" relative flex min-h-[200px] flex-col items-center justify-center p-2">
                 {txHash ? (
                   <div className="flex flex-col items-center ">
-                    <h2 className="text-xl font-bold mb-4 mt-3 text-center">
+                    <h2 className="mb-4 mt-3 text-center text-xl font-bold">
                       Yay! Your contract has been deployed.
                     </h2>
-                    <div className="mb-2 text-center text-md flex flex-col items-center">
+                    <div className="text-md mb-2 flex flex-col items-center text-center">
                       <p>See your transaction on {network}: </p>
                       <a
                         href={`${blockExplorer}/tx/${txHash}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="ml-1 text-md text-blue-600 underline hover:text-blue-800"
+                        className="text-md ml-1 text-blue-600 underline hover:text-blue-800"
                       >
                         {shortenedTx}
                       </a>
@@ -548,18 +548,18 @@ const SignUp = () => {
                         )}
                       </div>
                     </div>
-                    <div className="mt-6 text-center text-md flex flex-col items-center ">
+                    <div className="text-md mt-6 flex flex-col items-center text-center ">
                       <p>You will be redirected to the next step in just a few seconds...</p>
                     </div>
                   </div>
                 ) : (
                   <>
                     <div className="flex flex-col items-center">
-                      <h2 className="text-xl font-bold mb-3 mt-3 text-center">
+                      <h2 className="mb-3 mt-3 text-center text-xl font-bold">
                         Please wait ⏳
                       </h2>
 
-                      <div className="mb-2 text-center text-md flex flex-col items-center">
+                      <div className="text-md mb-2 flex flex-col items-center text-center">
                         <p >
                           We're working our magic on the blockchain...
                         </p>
@@ -576,7 +576,7 @@ const SignUp = () => {
               </div>
             </Dialog>
             <FormContainer>
-              <h2 className="text-2xl font-bold mb-4 mt-4">
+              <h2 className="mb-4 mt-4 text-2xl font-bold">
                 Create Your Organization
               </h2>
               <FormItem
@@ -610,7 +610,7 @@ const SignUp = () => {
             </FormContainer>
 
 
-            <div className='text-sm mt-4 items-center text-gray-500 p-1 flex flex-row justify-end'>
+            <div className='mt-4 flex flex-row items-center justify-end p-1 text-sm text-gray-500'>
               {/* <FiAlertTriangle className='mr-1'/> */}
               <p>By submitting this form, you’ll deploy a new Team Points contract on {network || 'an unsupported Network'}. This transaction will require gas fees.</p>
             </div>
@@ -620,7 +620,7 @@ const SignUp = () => {
       case 2:
         return (
           <FormContainer className="max-h-[500px] overflow-y-auto">
-            <h2 className="text-2xl font-bold mb-4 mt-4">
+            <h2 className="mb-4 mt-4 text-2xl font-bold">
               Your Agreement with the Organization
             </h2>
             <FormItem
@@ -674,15 +674,15 @@ const SignUp = () => {
                 value={formik.values.step3.commitment}
               />
             </FormItem>
-            <div className="flex items-center mb-4">
+            <div className="mb-4 flex items-center">
               <span className="font-bold">Compensation</span>
               <Tooltip
                 title={
                   <div>
-                    <div className="font-bold text-gray-300 mb-2">
+                    <div className="mb-2 font-bold text-gray-300">
                       Calculation Example
                     </div>
-                    <div className="text-gray-300 font-normal">
+                    <div className="font-normal text-gray-300">
                       <div>
                         Total Compensation = Market Rate ($3,000.00) *
                         Commitment (75%) = $2,250.00
@@ -697,13 +697,13 @@ const SignUp = () => {
                   </div>
                 }
               >
-                <div className="relative group text-berrylavender-400">
-                  <HiOutlineQuestionMarkCircle className="text-lg cursor-pointer ml-1" />{" "}
+                <div className="group relative text-berrylavender-400">
+                  <HiOutlineQuestionMarkCircle className="ml-1 cursor-pointer text-lg" />{" "}
                 </div>
               </Tooltip>
             </div>
-            <div className="mb-4 flex-row flex justify-start items-center bg-berrylavender-100 dark:bg-berrylavender-700 gap-1 p-2 rounded-lg">
-              <div className="text-berrylavender-700 dark:text-white font-semibold">
+            <div className="mb-4 flex flex-row items-center justify-start gap-1 rounded-lg bg-berrylavender-100 p-2 dark:bg-berrylavender-700">
+              <div className="font-semibold text-berrylavender-700 dark:text-white">
                 {formik.values.step3?.commitment && !formik.errors.step3?.commitment &&
                   formik.values.step3?.marketRate &&
                   !formik.errors.step3?.marketRate
@@ -714,7 +714,7 @@ const SignUp = () => {
                   : "Please input commitment and market rate to calculate the total compensation."}
               </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
               <FormItem
                 label="Market Rate"
                 extra={
@@ -826,7 +826,7 @@ const SignUp = () => {
         <PulsingCirclesBackground />
       </div>
       <Card
-        className="relative z-10 w-full md:w-[600px] min-h-[500px]"
+        className="relative z-10 min-h-[500px] w-full md:w-[600px]"
         bodyClass="md:p-10"
       >
         <div>

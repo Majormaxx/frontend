@@ -27,11 +27,11 @@ const PulsingCirclesBackground: React.FC = () => {
 
 
     return (
-        <div className="relative w-full h-full bg-[#1C4043] overflow-hidden z-index-0">
+        <div className="z-index-0 relative h-full w-full overflow-hidden bg-[#1C4043]">
             {[...Array(12)].map((_, i) => (
                 <motion.div
                     key={i}
-                    className="absolute w-48 h-48 bg-[#F2907A] rounded-full opacity-50"
+                    className="absolute h-48 w-48 rounded-full bg-[#F2907A] opacity-50"
                     style={{ filter: "blur(50px)" }}
                     initial={positions[i]}
                     animate={animate[i]}

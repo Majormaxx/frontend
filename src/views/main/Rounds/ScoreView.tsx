@@ -12,7 +12,7 @@ import BerryPartialRating from "@/components/collabberry/custom-components/Custo
 import { RoundStatus } from "@/components/collabberry/utils/collabberry-constants";
 
 const NoScoreAvailable: React.FC = () => (
-  <span className="font-semibold ml-1">N/A</span>
+  <span className="ml-1 font-semibold">N/A</span>
 );
 
 
@@ -77,19 +77,19 @@ const ContributorScoreView: React.FC = () => {
                   {
                     selectedUser?.profilePicture ? (
                       <Avatar
-                        className="mr-2 rounded-full h-24 w-24"
+                        className="mr-2 h-24 w-24 rounded-full"
                         src={selectedUser.profilePicture}
                       />
                     ) : (
                       <Avatar
-                        className="mr-2 rounded-full h-24 w-24"
+                        className="mr-2 h-24 w-24 rounded-full"
                         src={placeholderIcon}
                       />
                     )
 
                   }
                   <div>
-                    <div className="organization-name text-2xl mr-2 text-gray-900">
+                    <div className="organization-name mr-2 text-2xl text-gray-900">
                       {selectedUser?.username}
                     </div>
                     <div>
@@ -97,8 +97,8 @@ const ContributorScoreView: React.FC = () => {
                         <span>Total Score:</span>
                         {
                           selectedRound?.status === RoundStatus.Completed ? (
-                            <div className="flex flex-row gap-1 items-center">
-                              <span className="font-bold ml-1">
+                            <div className="flex flex-row items-center gap-1">
+                              <span className="ml-1 font-bold">
                                 {selectedUser?.totalScore.toFixed(1) || 0}
                               </span>
                               <BerryPartialRating rating={+selectedUser?.totalScore?.toFixed(1)} width={14} height={14} />
@@ -116,8 +116,8 @@ const ContributorScoreView: React.FC = () => {
 
                         {
                           selectedRound?.status === RoundStatus.Completed ? (
-                            <div className="flex flex-row gap-1 items-center">
-                              <span className="font-bold ml-1">
+                            <div className="flex flex-row items-center gap-1">
+                              <span className="ml-1 font-bold">
                                 {selectedUser?.workScore.toFixed(1) || 0}
                               </span>
                               <BerryPartialRating rating={+selectedUser?.workScore?.toFixed(1)} width={14} height={14} />
@@ -134,8 +134,8 @@ const ContributorScoreView: React.FC = () => {
 
                         {
                           selectedRound?.status === RoundStatus.Completed ? (
-                            <div className="flex flex-row gap-1 items-center">
-                              <span className="font-bold ml-1">
+                            <div className="flex flex-row items-center gap-1">
+                              <span className="ml-1 font-bold">
                                 {selectedUser?.cultureScore.toFixed(1) || 0}
                               </span>
                               <BerryPartialRating rating={+selectedUser?.cultureScore?.toFixed(1)} width={14} height={14} />

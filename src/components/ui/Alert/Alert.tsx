@@ -171,7 +171,7 @@ const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
                 <div className={showIcon ? 'ltr:ml-2 rtl:mr-2' : ''}>
                     {title ? (
                         <div
-                            className={`font-semibold mb-1 ${typeMap.titleColor}`}
+                            className={`mb-1 font-semibold ${typeMap.titleColor}`}
                         >
                             {title}
                         </div>

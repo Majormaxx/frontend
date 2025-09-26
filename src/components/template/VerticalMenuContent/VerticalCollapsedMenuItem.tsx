@@ -53,7 +53,7 @@ const DefaultItem = ({ nav, onLinkClick, userAuthority }: DefaultItemProps) => {
                         <MenuItem eventKey={subNav.key}>
                             {subNav.path ? (
                                 <Link
-                                    className="h-full w-full flex items-center"
+                                    className="flex h-full w-full items-center"
                                     to={subNav.path}
                                     onClick={() =>
                                         onLinkClick?.({
@@ -117,7 +117,7 @@ const CollapsedItem = ({
                         <Dropdown.Item eventKey={subNav.key}>
                             {subNav.path ? (
                                 <Link
-                                    className="h-full w-full flex items-center"
+                                    className="flex h-full w-full items-center"
                                     to={subNav.path}
                                     onClick={() =>
                                         onLinkClick?.({

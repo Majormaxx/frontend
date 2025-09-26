@@ -291,7 +291,7 @@ const Dashboard = () => {
       {/* stats card */}
       <div className="px-4">
         <Card
-          className="w-full sm:w-full md:w-full xl:w-3/4 2xl:w-1/2 mb-4"
+          className="mb-4 w-full sm:w-full md:w-full xl:w-3/4 2xl:w-1/2"
           bodyClass="h-full flex flex-col justify-between"
         >
           <div className="flex items-center justify-between">
@@ -335,11 +335,11 @@ const Dashboard = () => {
         </Card>
       </div>
       {/* admin and org cards */}
-      <div className="flex flex-col items-start h-full px-4">
+      <div className="flex h-full flex-col items-start px-4">
         {user?.isAdmin && (
-          <div className="w-full mb-6">
-            <h1 className="text-2xl font-bold mb-4">Steps to Complete</h1>
-            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 2xl:grid-cols-6 gap-4">
+          <div className="mb-6 w-full">
+            <h1 className="mb-4 text-2xl font-bold">Steps to Complete</h1>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4 2xl:grid-cols-6">
               {adminCards.map((card, index) =>
                 card.condition !== false && (
                   <InfoCard
@@ -356,16 +356,16 @@ const Dashboard = () => {
           </div>
         )}
         <div className="w-full">
-          <h1 className="text-2xl font-bold mb-4">My Organization</h1>
-          <div className="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-4">
-            <div className="max-h-48 2xl:max-h-68">
+          <h1 className="mb-4 text-2xl font-bold">My Organization</h1>
+          <div className="grid grid-cols-1 gap-4 xl:grid-cols-2 2xl:grid-cols-3">
+            <div className="2xl:max-h-68 max-h-48">
               <img
                 src={teamPic}
-                className="rounded object-cover w-full h-full"
+                className="h-full w-full rounded object-cover"
               />
             </div>
 
-            <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
               {organizationCards.map(
                 (card, index) =>
                   card.condition !== false && (

@@ -25,15 +25,15 @@ const HeaderActionsEnd = () => {
 const StackedSideLayout = () => {
     return (
         <div className="app-layout-stacked-side flex flex-auto flex-col">
-            <div className="flex flex-auto min-w-0">
+            <div className="flex min-w-0 flex-auto">
                 <StackedSideNav />
-                <div className="flex flex-col flex-auto min-h-screen min-w-0 relative w-full">
+                <div className="relative flex min-h-screen w-full min-w-0 flex-auto flex-col">
                     <Header
                         className="shadow dark:shadow-2xl"
                         headerStart={<HeaderActionsStart />}
                         headerEnd={<HeaderActionsEnd />}
                     />
-                    <div className="h-full flex flex-auto flex-col">
+                    <div className="flex h-full flex-auto flex-col">
                         <View />
                     </div>
                 </div>

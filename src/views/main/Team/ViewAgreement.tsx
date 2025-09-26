@@ -32,13 +32,13 @@ export const ContributorHeader: React.FC<{ contributor: Contributor, shortAddres
 
   return (
     <>
-      <div className="flex flex-row items-center mb-4 mt-4">
+      <div className="mb-4 mt-4 flex flex-row items-center">
 
         <img
           src={profilePicture ?? placeholderIcon
           }
           alt="User Avatar"
-          className="w-10 h-10 rounded-full mr-2"
+          className="mr-2 h-10 w-10 rounded-full"
         />
 
         <div className="flex flex-col items-start">
@@ -69,7 +69,7 @@ const AgreementDetails: React.FC<{ contributor: Contributor }> = ({
   return (
     <>
 
-      <div className="mt-4 p-4 bg-berrylavender-100 rounded">
+      <div className="mt-4 rounded bg-berrylavender-100 p-4">
         <div className="flex flex-row justify-between font-semibold text-berrylavender-700">
           <p>{`Commitment: ${commitment ? commitment?.toFixed(0) : "Not Set"}%`}</p>
           <p>|</p>
@@ -80,9 +80,9 @@ const AgreementDetails: React.FC<{ contributor: Contributor }> = ({
         </div>
       </div>
       <div className="max-h-96 overflow-y-scroll">
-        <h2 className="text-4xl font-bold mt-4 mb-4">Agreement</h2>
+        <h2 className="mb-4 mt-4 text-4xl font-bold">Agreement</h2>
 
-        <div className="flex justify-end mb-4">
+        <div className="mb-4 flex justify-end">
         </div>
         <div className="mb-2">
           <div className="font-bold">Role:</div>
@@ -170,10 +170,10 @@ const ViewAgreement: React.FC<ViewAgreementProps> = ({
           />
         )
       }
-      <div className="flex justify-end mt-4 gap-4">
+      <div className="mt-4 flex justify-end gap-4">
         {isAdmin && !isAuthenticatedContributor && (
           <Button
-            className="ltr:mr-2 rtl:ml-2 self-start"
+            className="self-start ltr:mr-2 rtl:ml-2"
             variant="twoTone"
             color="pink-600"
             onClick={() => openRemoveAgreementDialog()}

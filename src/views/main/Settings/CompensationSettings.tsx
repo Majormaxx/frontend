@@ -165,7 +165,7 @@ const CompensationSettings: React.FC<any> = () => {
           <FormContainer>
 
 
-            <div className="flex flex-col lg:flex-row items-start justify-between">
+            <div className="flex flex-col items-start justify-between lg:flex-row">
               <FormItem
                 label="Compensation Period"
                 asterisk={true}
@@ -210,7 +210,7 @@ const CompensationSettings: React.FC<any> = () => {
                              />  */}
               </FormItem>
             </div>
-            <div className="flex flex-col lg:flex-row items-start justify-between gap-4">
+            <div className="flex flex-col items-start justify-between gap-4 lg:flex-row">
               <FormItem
                 label="Assesment Start Delay (in days)"
                 className="w-full"
@@ -259,7 +259,7 @@ const CompensationSettings: React.FC<any> = () => {
                 />
               </FormItem>
             </div>
-            <div className="flex flex-col lg:flex-row items-start justify-between gap-4">
+            <div className="flex flex-col items-start justify-between gap-4 lg:flex-row">
               <FormItem
                 label="Peer Assessment Weight"
                 className="w-1/2"
@@ -292,7 +292,7 @@ const CompensationSettings: React.FC<any> = () => {
                   </Alert>
                 )}
             </div>
-            <div className="flex justify-end mt-4">
+            <div className="mt-4 flex justify-end">
               <Button
                 type="submit"
                 className="mx-2"
@@ -306,7 +306,7 @@ const CompensationSettings: React.FC<any> = () => {
         </Card>
       ) : (
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <StatisticCard
             value={
               organization?.compensationPeriod

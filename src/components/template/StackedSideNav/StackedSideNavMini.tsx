@@ -134,7 +134,7 @@ const StackedSideNavMini = (props: StackedSideNavMiniProps) => {
                             ) : (
                                 <Link
                                     to={nav.path}
-                                    className="flex items-center h-full w-full"
+                                    className="flex h-full w-full items-center"
                                     onClick={() =>
                                         handleLinkMenuItemSelect({
                                             key: nav.key,

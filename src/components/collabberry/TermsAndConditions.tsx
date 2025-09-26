@@ -3,24 +3,24 @@ import React from "react";
 const TermsAndConditions: React.FC = () => {
   return (
     <>
-      <h5 className="text-2xl font-semibold mb-4">Terms and Conditions</h5>
+      <h5 className="mb-4 text-2xl font-semibold">Terms and Conditions</h5>
       <div className="max-h-96 overflow-y-auto">
         <p className="mb-4">
           Welcome to Collabberry! These terms and conditions outline the rules
           and regulations for the use of Collabberry's Website.
         </p>
-        <h2 className="text-2xl font-semibold mb-2">Introduction</h2>
+        <h2 className="mb-2 text-2xl font-semibold">Introduction</h2>
         <p className="mb-4">
           By accessing this website we assume you accept these terms and
           conditions. Do not continue to use Collabberry if you do not agree to
           take all of the terms and conditions stated on this page.
         </p>
-        <h2 className="text-2xl font-semibold mb-2">Cookies</h2>
+        <h2 className="mb-2 text-2xl font-semibold">Cookies</h2>
         <p className="mb-4">
           We employ the use of cookies. By accessing Collabberry, you agreed to
           use cookies in agreement with the Collabberry's Privacy Policy.
         </p>
-        <h2 className="text-2xl font-semibold mb-2">License</h2>
+        <h2 className="mb-2 text-2xl font-semibold">License</h2>
         <p className="mb-4">
           Unless otherwise stated, Collabberry and/or its licensors own the
           intellectual property rights for all material on Collabberry. All
@@ -28,7 +28,7 @@ const TermsAndConditions: React.FC = () => {
           Collabberry for your own personal use subjected to restrictions set in
           these terms and conditions.
         </p>
-        <ul className="list-disc list-inside mb-4">
+        <ul className="mb-4 list-inside list-disc">
           <li>You must not republish material from Collabberry</li>
           <li>
             You must not sell, rent or sub-license material from Collabberry
@@ -39,14 +39,14 @@ const TermsAndConditions: React.FC = () => {
           <li>You must not redistribute content from Collabberry</li>
         </ul>
         <p className="mb-4">This Agreement shall begin on the date hereof.</p>
-        <h2 className="text-2xl font-semibold mb-2">
+        <h2 className="mb-2 text-2xl font-semibold">
           Hyperlinking to our Content
         </h2>
         <p className="mb-4">
           The following organizations may link to our Website without prior
           written approval:
         </p>
-        <ul className="list-disc list-inside mb-4">
+        <ul className="mb-4 list-inside list-disc">
           <li>Government agencies;</li>
           <li>Search engines;</li>
           <li>News organizations;</li>
@@ -68,13 +68,13 @@ const TermsAndConditions: React.FC = () => {
           approval of the linking party and its products and/or services; and
           (c) fits within the context of the linking party's site.
         </p>
-        <h2 className="text-2xl font-semibold mb-2">iFrames</h2>
+        <h2 className="mb-2 text-2xl font-semibold">iFrames</h2>
         <p className="mb-4">
           Without prior approval and written permission, you may not create
           frames around our Webpages that alter in any way the visual
           presentation or appearance of our Website.
         </p>
-        <h2 className="text-2xl font-semibold mb-2">Content Liability</h2>
+        <h2 className="mb-2 text-2xl font-semibold">Content Liability</h2>
         <p className="mb-4">
           We shall not be hold responsible for any content that appears on your
           Website. You agree to protect and defend us against all claims that is
@@ -83,9 +83,9 @@ const TermsAndConditions: React.FC = () => {
           infringes, otherwise violates, or advocates the infringement or other
           violation of, any third party rights.
         </p>
-        <h2 className="text-2xl font-semibold mb-2">Your Privacy</h2>
+        <h2 className="mb-2 text-2xl font-semibold">Your Privacy</h2>
         <p className="mb-4">Please read Privacy Policy</p>
-        <h2 className="text-2xl font-semibold mb-2">Reservation of Rights</h2>
+        <h2 className="mb-2 text-2xl font-semibold">Reservation of Rights</h2>
         <p className="mb-4">
           We reserve the right to request that you remove all links or any
           particular link to our Website. You approve to immediately remove all
@@ -94,7 +94,7 @@ const TermsAndConditions: React.FC = () => {
           continuously linking to our Website, you agree to be bound to and
           follow these linking terms and conditions.
         </p>
-        <h2 className="text-2xl font-semibold mb-2">
+        <h2 className="mb-2 text-2xl font-semibold">
           Removal of links from our website
         </h2>
         <p className="mb-4">
@@ -109,13 +109,13 @@ const TermsAndConditions: React.FC = () => {
           ensure that the website remains available or that the material on the
           website is kept up to date.
         </p>
-        <h2 className="text-2xl font-semibold mb-2">Disclaimer</h2>
+        <h2 className="mb-2 text-2xl font-semibold">Disclaimer</h2>
         <p className="mb-4">
           To the maximum extent permitted by applicable law, we exclude all
           representations, warranties and conditions relating to our website and
           the use of this website. Nothing in this disclaimer will:
         </p>
-        <ul className="list-disc list-inside mb-4">
+        <ul className="mb-4 list-inside list-disc">
           <li>
             limit or exclude our or your liability for death or personal injury;
           </li>

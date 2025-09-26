@@ -53,7 +53,7 @@ const DefaultOption = ({
             <span className="ml-2">{label}</span>
             {isSelected && (
                 <HiCheck
-                    className={`text-${themeColor} dark:text-white text-xl`}
+                    className={`text-${themeColor} text-xl dark:text-white`}
                 />
             )}
         </div>

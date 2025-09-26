@@ -146,7 +146,7 @@ const ManualAllocation: React.FC = () => {
                         title="Minting Tokens..."
                         handleDialogClose={() => null}   >
                     </LoadingDialog>
-                    <Card className="w-3/4 mt-4">
+                    <Card className="mt-4 w-3/4">
                         <Formik
                             validationSchema={validationSchema}
                             initialValues={initialValues}
@@ -175,7 +175,7 @@ const ManualAllocation: React.FC = () => {
                                                                     )
 
                                                                 return (
-                                                                    <div key={index} className='flex flex-row items-center justify-start w-full gap-4' >
+                                                                    <div key={index} className='flex w-full flex-row items-center justify-start gap-4' >
                                                                         {/* <div>
                                                                             {organization?.contributors?.some(orgContributor => orgContributor.walletAddress === contributor.walletAddress) ? (
                                                                                 (() => {
@@ -206,7 +206,7 @@ const ManualAllocation: React.FC = () => {
                                                                                 errorMessage={
                                                                                     walletAddressFeedback.errorMessage
                                                                                 }
-                                                                                className='flex flex-col m-0 flex-1'
+                                                                                className='m-0 flex flex-1 flex-col'
                                                                             >
                                                                                 <Field
                                                                                     invalid={
@@ -257,7 +257,7 @@ const ManualAllocation: React.FC = () => {
                                                                             errorMessage={
                                                                                 amountFeedback.errorMessage
                                                                             }
-                                                                            className='flex flex-col m-0 w-1/4'
+                                                                            className='m-0 flex w-1/4 flex-col'
                                                                         >
                                                                             <Field
                                                                                 invalid={
@@ -297,8 +297,8 @@ const ManualAllocation: React.FC = () => {
                                                             })
 
                                                             : null}
-                                                        <div className='flex flex-col items-end justify-end w-full gap-4'>
-                                                            <div className='flex flex-row items-center justify-start w-full mt-4'>
+                                                        <div className='flex w-full flex-col items-end justify-end gap-4'>
+                                                            <div className='mt-4 flex w-full flex-row items-center justify-start'>
                                                                 <Button
                                                                     type="button"
                                                                     className="ltr:mr-2 rtl:ml-2"

@@ -28,18 +28,18 @@ const SuccessDialog: React.FC<SuccessDialogProps> = ({
 
     return (
         <Dialog isOpen={dialogVisible} onClose={handleDialogClose} shouldCloseOnOverlayClick>
-            <div className=" flex flex-col items-center justify-center p-2 min-h-[200px]">
+            <div className=" flex min-h-[200px] flex-col items-center justify-center p-2">
                 <div className="flex flex-col items-center">
-                    <h2 className="text-xl font-bold mb-4 mt-3 text-center">
+                    <h2 className="mb-4 mt-3 text-center text-xl font-bold">
                         {dialogMessage}
                     </h2>
-                    <div className="mb-2 text-center text-md flex flex-col items-center">
+                    <div className="text-md mb-2 flex flex-col items-center text-center">
                         <p>See your transaction on {txNetwork}: </p>
                         <a
                             href={`${blockExplorer}/tx/${txHash}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="ml-1 text-md text-blue-600 underline hover:text-blue-800"
+                            className="text-md ml-1 text-blue-600 underline hover:text-blue-800"
                         >
                             {shortenedTx}
                         </a>

@@ -17,7 +17,7 @@ interface RatingReviewProps {
 
 function BerryRating({ field, value, setFieldValue }: RatingReviewProps) {
   return (
-    <div className="flex flex-row gap-1 mt-2 mb-2">
+    <div className="mb-2 mt-2 flex flex-row gap-1">
       {[1, 2, 3, 4, 5].map((star) => {
         return (
           <div

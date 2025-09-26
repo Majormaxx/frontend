@@ -223,8 +223,8 @@ const Assess = () => {
   return (
     <>
       {reviewedMembers.length === teamMembers.length ? (
-        <div className="flex justify-center items-center flex-col mt-4">
-          <div className="text-center text-lg font-bold max-w-[600px]">
+        <div className="mt-4 flex flex-col items-center justify-center">
+          <div className="max-w-[600px] text-center text-lg font-bold">
             Great job! You have submitted assessments for all the selected team
             members. If you want to select more team members, you can go back to
             the assessment panel.
@@ -242,12 +242,12 @@ const Assess = () => {
           </div>
         </div>
       ) : (
-        <div className="flex flex-col md:flex-row gap-4 w-full">
+        <div className="flex w-full flex-col gap-4 md:flex-row">
           <CustomSteps
             current={teamMemberIndex}
             vertical={window.innerWidth >= 768}
             onChange={(index) => onStepChange(index)}
-            className="justify-start mr-4"
+            className="mr-4 justify-start"
           >
             {teamMembers.map((member, index) => (
               <CustomSteps.StepItemWithAvatar
@@ -265,7 +265,7 @@ const Assess = () => {
             ))}
           </CustomSteps>
           <Card className="w-full">
-            <div className="flex flex-col md:flex-row md:justify-between items-start md:items-center">
+            <div className="flex flex-col items-start md:flex-row md:items-center md:justify-between">
               <ContributorHeader contributor={currentMember} shortAddress />
               <Button
                 size="sm"
@@ -279,7 +279,7 @@ const Assess = () => {
             </div>
             <div>
               <FormContainer>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+                <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
                   <FormItem label="">
                     <div className="text-2xl">Culture Impact</div>
                     <BerryRating
@@ -307,8 +307,8 @@ const Assess = () => {
                     </div>
                   </FormItem>
                 </div>
-                <div className="flex flex-col mt-8">
-                  <div className="text-2xl mb-4">Feedback</div>
+                <div className="mt-8 flex flex-col">
+                  <div className="mb-4 text-2xl">Feedback</div>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       {`What do you think ${currentMember.username} did well in the past month, appreciate in them, and believe they should continue doing this way?`}
@@ -317,7 +317,7 @@ const Assess = () => {
                       {`What do you think ${currentMember.username} didn't do well in the past month or can work on to improve?`}
                     </div>
                   </div>
-                  <div className="grid grid-cols-2 gap-4 mt-4">
+                  <div className="mt-4 grid grid-cols-2 gap-4">
                     <FormItem label="">
                       <Input
                         name={`${currentMember.id}.feedbackPositive`}
@@ -349,7 +349,7 @@ const Assess = () => {
                   </div>
                 </div>
               </FormContainer>
-              <div className="flex justify-end mt-4">
+              <div className="mt-4 flex justify-end">
                 <Button
                   type="submit"
                   onClick={() => handleSubmit(formik.values)}

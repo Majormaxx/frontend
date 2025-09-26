@@ -182,7 +182,7 @@ const Rounds: React.FC = () => {
 
   return (
     <div>
-      <div className="flex flex-row gap-2 items-center">
+      <div className="flex flex-row items-center gap-2">
         <h1>Rounds</h1>
       </div>
       {
@@ -215,9 +215,9 @@ const Rounds: React.FC = () => {
           </>
         ) : (
           <>
-            <div className="mt-4 flex-row flex justify-start items-center bg-gray-100 dark:bg-gray-700 gap-1 p-3 rounded-lg">
+            <div className="mt-4 flex flex-row items-center justify-start gap-1 rounded-lg bg-gray-100 p-3 dark:bg-gray-700">
               <HiInformationCircle className="text-2xl" />
-              <div className="text-gray-500 font-semibold">
+              <div className="font-semibold text-gray-500">
                 There are no rounds available.
               </div>
               {/* <div>

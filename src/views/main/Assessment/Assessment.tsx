@@ -206,7 +206,7 @@ const Assessment = () => {
               //   </Alert>
               // ) : 
               (
-                <div className="mt-4 text-md font-bold text-gray-500">
+                <div className="text-md mt-4 font-bold text-gray-500">
                   Select the team members you interacted with last month.
                 </div>
               )}
@@ -215,10 +215,10 @@ const Assessment = () => {
         }
       </div>
 
-      {isLoading ? (<Skeleton height={200} className="mt-8 mb-8" />) : (
+      {isLoading ? (<Skeleton height={200} className="mb-8 mt-8" />) : (
         <>
           {isTableDisabled  ? (
-            <div className="mt-8 mb-8">
+            <div className="mb-8 mt-8">
               <LottieAnimation animationData={animationData} />
             </div>
           ) : contributorsWithDisabledFlag.length > 0 ? (
@@ -230,7 +230,7 @@ const Assessment = () => {
               disabled={isTableDisabled}
             />
           ) : (
-            <div className="mt-4 mb-4">
+            <div className="mb-4 mt-4">
               <Alert showIcon type="danger">
                 <p>
                   There are no contributors available for assessment at this time.

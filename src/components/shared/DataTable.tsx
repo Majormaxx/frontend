@@ -321,7 +321,7 @@ function _DataTable<T>(
                     </TBody>
                 )}
             </Table>
-            <div className="flex items-center justify-between mt-4">
+            <div className="mt-4 flex items-center justify-between">
                 <Pagination
                     pageSize={pageSize}
                     currentPage={pageIndex}

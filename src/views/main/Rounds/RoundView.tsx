@@ -242,7 +242,7 @@ const RoundView: React.FC = () => {
             {isCurrentUser ? (
               <div className="flex flex-row justify-center">
                 {contributor.hasAssessed ? (
-                  <HiCheck className="text-berrylavender-500 text-2xl font-semibold" />
+                  <HiCheck className="text-2xl font-semibold text-berrylavender-500" />
                 ) : (
                   <></>
                 )}
@@ -250,7 +250,7 @@ const RoundView: React.FC = () => {
             ) : (
               <div className="flex flex-row justify-center">
                 {contributor.hasAssessed ? (
-                  <HiCheck className="text-berrylavender-500 text-2xl font-semibold" />
+                  <HiCheck className="text-2xl font-semibold text-berrylavender-500" />
                 ) : selectedRound?.id === currentRound?.id && !reminded ? (
                   <Button
                     size="sm"
@@ -409,7 +409,7 @@ const RoundView: React.FC = () => {
             </Button>
           </div>
           <div className="flex flex-row justify-between">
-            <div className="flex flex-row justify-start items-center gap-2">
+            <div className="flex flex-row items-center justify-start gap-2">
               <h1>Round {selectedRound?.roundNumber}</h1>
               <RoundStatusTag roundStatus={selectedRound?.status} />
               {selectedRound?.status === RoundStatus.Completed && (
@@ -428,7 +428,7 @@ const RoundView: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <p className="button flex items-center bg-white border border-gray-300 dark:bg-gray-700 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 active:bg-gray-100 dark:active:bg-gray-500 dark:active:border-gray-500 text-gray-600 dark:text-gray-100 radius-round h-9 px-3 py-2 text-sm"
+                <p className="button radius-round flex h-9 items-center border border-gray-300 bg-white px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 active:bg-gray-100 dark:border-gray-700 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600 dark:active:border-gray-500 dark:active:bg-gray-500"
                 >
                   <span>View Team Points Minted</span>
                   <HiExternalLink className="ml-1 h-5 w-5" />
@@ -439,8 +439,8 @@ const RoundView: React.FC = () => {
             </div>) : null}
             {selectedRound?.status === RoundStatus.InProgress && contributors.length && (
               <div className="flex flex-row items-center rounded bg-gray-200 p-2">
-                <FiClock className="text-berrylavender-500 mr-2 text-2xl" />
-                <div className="text-gray-900 mr-2 text-lg">Time left</div>
+                <FiClock className="mr-2 text-2xl text-berrylavender-500" />
+                <div className="mr-2 text-lg text-gray-900">Time left</div>
                 <Countdown
                   date={selectedRound?.endDate}
                   renderer={CustomCountdown}

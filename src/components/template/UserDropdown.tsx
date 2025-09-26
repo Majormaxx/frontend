@@ -37,7 +37,7 @@ const _UserDropdown = ({ className }: CommonProps) => {
                 placement="bottom-end"
             >
                 <Dropdown.Item variant="header">
-                    <div className="py-2 px-3 flex items-center gap-2">
+                    <div className="flex items-center gap-2 px-3 py-2">
                         <Avatar shape="circle" icon={<HiOutlineUser />} />
                         <div>
                             <div className="font-bold text-gray-900 dark:text-gray-100">
@@ -58,7 +58,7 @@ const _UserDropdown = ({ className }: CommonProps) => {
                             className="flex h-full w-full px-2" 
                             to={item.path}
                         >
-                            <span className="flex gap-2 items-center w-full">
+                            <span className="flex w-full items-center gap-2">
                                 <span className="text-xl opacity-50">
                                     {item.icon}
                                 </span>

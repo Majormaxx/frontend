@@ -91,7 +91,7 @@ const CustomSelectOption = ({
                 <ColorBadge themeColor={data.value} />
                 <span>{label}</span>
             </div>
-            {isSelected && <HiCheck className="text-emerald-500 text-xl" />}
+            {isSelected && <HiCheck className="text-xl text-emerald-500" />}
         </div>
     )
 }

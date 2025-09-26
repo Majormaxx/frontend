@@ -121,7 +121,7 @@ const CustomTableWithSorting = <T,>({
                 <Tr key={group.id}>
                   {group.headers.map((header) => {
                     return (
-                      <Th key={header.id} colSpan={header.colSpan} className="py-2 px-1 text-start">
+                      <Th key={header.id} colSpan={header.colSpan} className="px-1 py-2 text-start">
                         {flexRender(
                           header.column.columnDef.footer,
                           header.getContext()
@@ -134,7 +134,7 @@ const CustomTableWithSorting = <T,>({
             </TFoot>
           </Table>
           {shouldShowPagination && (
-            <div className="flex items-center justify-between mt-4">
+            <div className="mt-4 flex items-center justify-between">
               <Pagination
                 pageSize={table.getState().pagination.pageSize}
                 currentPage={table.getState().pagination.pageIndex + 1}

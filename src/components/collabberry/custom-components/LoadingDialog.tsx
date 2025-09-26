@@ -20,12 +20,12 @@ const ErrorDialog: React.FC<LoadingDialogProps> = ({
 
     return (
         <Dialog isOpen={dialogVisible} onClose={handleDialogClose} closable={false}> 
-            <div className=" flex flex-col items-center justify-center p-2 min-h-[200px]">
+            <div className=" flex min-h-[200px] flex-col items-center justify-center p-2">
                 <div className="flex flex-col items-center">
-                    <h2 className="text-xl font-bold mb-3 mt-3 text-center">
+                    <h2 className="mb-3 mt-3 text-center text-xl font-bold">
                         {title}
                     </h2>
-                    <div className="mb-2 text-center text-md flex flex-col items-center">
+                    <div className="text-md mb-2 flex flex-col items-center text-center">
                         <p>{message}</p>
                     </div>
 

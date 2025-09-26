@@ -12,7 +12,7 @@ interface SimpleProps extends CommonProps {
 const Simple = ({ children, content, ...rest }: SimpleProps) => {
     return (
         <div className="h-full">
-            <Container className="flex flex-col flex-auto items-center justify-center min-w-0 h-full">
+            <Container className="flex h-full min-w-0 flex-auto flex-col items-center justify-center">
                 <Card
                     className="min-w-[320px] md:min-w-[450px]"
                     bodyClass="md:p-10"

@@ -109,7 +109,7 @@ const FormItem = forwardRef<HTMLDivElement, FormItemProps>((props, ref) => {
           {label}
           {extraTooltip && (
             <Tooltip title={extraTooltip}>
-              <HiOutlineQuestionMarkCircle className="text-lg cursor-pointer ml-1 text-berrylavender-400" />
+              <HiOutlineQuestionMarkCircle className="ml-1 cursor-pointer text-lg text-berrylavender-400" />
             </Tooltip>
           )}
 
@@ -119,7 +119,7 @@ const FormItem = forwardRef<HTMLDivElement, FormItemProps>((props, ref) => {
         <div
           className={
             formItemLayout === LAYOUT.HORIZONTAL
-              ? "w-full flex flex-col justify-center relative"
+              ? "relative flex w-full flex-col justify-center"
               : ""
           }
         >

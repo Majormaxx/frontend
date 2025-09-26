@@ -58,8 +58,8 @@ function useAuth() {
     try {
       if (token) {
         dispatch(walletConnected(token));
-        let response: any = await apiGetUser();
-        let user = response?.data || {};
+        const response: any = await apiGetUser();
+        const user = response?.data || {};
         let url = appConfig.authenticatedEntryPath;
         if (!user || !user.organization) {
           user.username = "Anonymous";

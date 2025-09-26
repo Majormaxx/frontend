@@ -1,0 +1,1 @@
+export type RecognitionMode = 'hours-based' | 'discretionary';

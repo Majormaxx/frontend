@@ -22,7 +22,7 @@ const RoundStatusTag: React.FC<RoundStatusTagProps> = ({ roundStatus }) => {
   const status = getStatusTextAndColor(roundStatus);
 
   return (
-    <Tag className={`text-${status.color}-500 bg-${status.color}-50 border-0 h-6`}>
+    <Tag className={`text-${status.color}-500 bg-${status.color}-50 h-6 border-0`}>
       {status.text}
     </Tag>
   );

@@ -193,10 +193,10 @@ const _updateConfig = async (
     contractAddress: string,
     isTransferable: boolean,
     isOutsideTransferAllowed: boolean,
-    materialWeight: BigInt,
-    baseTimeWeight: BigInt,
+    materialWeight: bigint,
+    baseTimeWeight: bigint,
     enableTimeScaling: boolean,
-    maxTimeScaling: BigInt,
+    maxTimeScaling: bigint,
     ethersSigner: ethers.JsonRpcSigner | undefined
 ): Promise<ContractResponse> => {
     try {
@@ -510,10 +510,10 @@ export const useContractService = () => {
         contractAddress: string,
         isTransferable: boolean,
         isOutsideTransferAllowed: boolean,
-        materialWeight: BigInt,
-        baseTimeWeight: BigInt,
+        materialWeight: bigint,
+        baseTimeWeight: bigint,
         enableTimeScaling: boolean,
-        maxTimeScaling: BigInt,
+        maxTimeScaling: bigint,
 
     ): Promise<ContractResponse> => {
         if (!ethersSigner || !address) {

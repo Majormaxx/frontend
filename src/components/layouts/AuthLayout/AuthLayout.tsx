@@ -19,13 +19,13 @@ const AuthLayout = () => {
   const layoutType = useAppSelector((state) => state.theme.layout.type);
 
   return (
-    <div className="flex flex-col flex-auto min-h-screen min-w-0 relative w-full">
+    <div className="relative flex min-h-screen w-full min-w-0 flex-auto flex-col">
       <Header
-        className="bg-transparent backdrop-blur-md shadow-none"
+        className="bg-transparent shadow-none backdrop-blur-md"
         headerStart={<CollabberyLogoFull />}
         headerEnd={<AuthHeaderActionEnd />}
       />
-      <div className="container mx-auto flex flex-1 items-center flex-col justify-center">
+      <div className="container mx-auto flex flex-1 flex-col items-center justify-center">
         <View />
       </div>
     </div>

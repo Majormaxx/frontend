@@ -51,7 +51,7 @@ const DefaultItem = (props: DefaultItemProps) => {
             <MenuItem key={nav.key} eventKey={nav.key} className="mb-2">
                 <Link
                     to={nav.path}
-                    className="flex items-center h-full w-full"
+                    className="flex h-full w-full items-center"
                     onClick={() =>
                         onLinkClick?.({
                             key: nav.key,

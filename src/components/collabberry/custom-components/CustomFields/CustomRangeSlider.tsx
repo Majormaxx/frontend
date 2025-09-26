@@ -18,7 +18,7 @@ const CustomRangeSlider: React.FC<CustomRangeSliderProps> = ({
   step = 5,
 }) => {
   return (
-    <div className="w-full flex items-center">
+    <div className="flex w-full items-center">
       <input
         type="range"
         min={min}
@@ -29,7 +29,7 @@ const CustomRangeSlider: React.FC<CustomRangeSliderProps> = ({
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
           setFieldValue(field, Number(e.target.value))
         }
-        className="w-full h-2 bg-berrylavender-100 rounded-lg appearance-none cursor-pointer accent-berrylavender-500"
+        className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-berrylavender-100 accent-berrylavender-500"
       />
       <span className="ml-2 text-purple-600">{value}%</span>
     </div>

@@ -26,9 +26,9 @@ const HeaderActionsEnd = () => {
 
 const SimpleLayout = () => {
     return (
-        <div className="app-layout-simple flex flex-auto flex-col min-h-screen">
-            <div className="flex flex-auto min-w-0">
-                <div className="flex flex-col flex-auto min-h-screen min-w-0 relative w-full">
+        <div className="app-layout-simple flex min-h-screen flex-auto flex-col">
+            <div className="flex min-w-0 flex-auto">
+                <div className="relative flex min-h-screen w-full min-w-0 flex-auto flex-col">
                     <Header
                         container
                         className="shadow dark:shadow-2xl"

@@ -49,7 +49,7 @@ const StatusIcon = ({ status }: { status: StatusType }) => {
         case 'warning':
             return (
                 <Avatar
-                    className="text-amber-600 bg-amber-100 dark:text-amber-100"
+                    className="bg-amber-100 text-amber-600 dark:text-amber-100"
                     shape="circle"
                 >
                     <span className="text-2xl">
@@ -60,7 +60,7 @@ const StatusIcon = ({ status }: { status: StatusType }) => {
         case 'danger':
             return (
                 <Avatar
-                    className="text-red-600 bg-red-100 dark:text-red-100"
+                    className="bg-red-100 text-red-600 dark:text-red-100"
                     shape="circle"
                 >
                     <span className="text-2xl">
@@ -97,7 +97,7 @@ const ConfirmDialog = (props: ConfirmDialogProps) => {
 
     return (
         <Dialog contentClassName="pb-0 px-0" {...rest}>
-            <div className="px-6 pb-6 pt-2 flex">
+            <div className="flex px-6 pb-6 pt-2">
                 <div>
                     <StatusIcon status={type} />
                 </div>
@@ -106,7 +106,7 @@ const ConfirmDialog = (props: ConfirmDialogProps) => {
                     {children}
                 </div>
             </div>
-            <div className="text-right px-6 py-3 bg-gray-100 dark:bg-gray-700 rounded-bl-lg rounded-br-lg">
+            <div className="rounded-bl-lg rounded-br-lg bg-gray-100 px-6 py-3 text-right dark:bg-gray-700">
                 <Button
                     size="sm"
                     className="ltr:mr-2 rtl:ml-2"

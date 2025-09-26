@@ -42,7 +42,7 @@ const InfoCard: React.FC<InfoCardProps> = ({
             )}
             {step && (
               <div className="flex items-center justify-center">
-                <div className="text-gray-900 text-2xl font-bold">{step}</div>
+                <div className="text-2xl font-bold text-gray-900">{step}</div>
               </div>
             )}
           </>

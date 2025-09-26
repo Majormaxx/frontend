@@ -71,7 +71,7 @@ const LayoutSwitcher = () => {
                 value={[type]}
                 onChange={(val) => onLayoutSelect(val[0] as LayoutType)}
             >
-                <div className="grid grid-cols-3 gap-4 w-full">
+                <div className="grid w-full grid-cols-3 gap-4">
                     {layouts.map((layout) => (
                         <Segment.Item key={layout.value} value={layout.value}>
                             {({ active, onSegmentItemClick, disabled }) => {

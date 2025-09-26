@@ -105,11 +105,11 @@ const AddAdminForm: React.FC<AddAdminFormProps> = ({
 
             <FormikProvider value={formik}>
                 <FormContainer
-                    className="xl:max-h-[750px] min-h-[200px] flex flex-col justify-between"
+                    className="flex min-h-[200px] flex-col justify-between xl:max-h-[750px]"
                 >
                     {
                         formik.isSubmitting ? (<>
-                            <div className="pointer-events-none select-none mt-8 w-full">
+                            <div className="pointer-events-none mt-8 w-full select-none">
                                 {animationData && (
                                     <LottieAnimation animationData={animationData} height={160}
                                         width={160} />
@@ -117,10 +117,10 @@ const AddAdminForm: React.FC<AddAdminFormProps> = ({
                             </div>
                         </>) : (
                             <>
-                                <InputGroup className='w-full mt-8'>
+                                <InputGroup className='mt-8 w-full'>
                                     <FormItem
                                         label="Address"
-                                        className='flex flex-col m-0 flex-1 h-full'
+                                        className='m-0 flex h-full flex-1 flex-col'
                                         invalid={
                                             formik.errors.walletAddress &&
                                             formik.touched.walletAddress
@@ -179,7 +179,7 @@ const AddAdminForm: React.FC<AddAdminFormProps> = ({
                                         )}
                                     </Addon>
                                 </InputGroup>
-                                <div className='text-sm mt-4 items-center text-gray-500 p-1 flex flex-row justify-end'>
+                                <div className='mt-4 flex flex-row items-center justify-end p-1 text-sm text-gray-500'>
                                     <p>This transaction will modify contract settings on chain and require gas fees.</p>
                                 </div>
                             </>
@@ -188,7 +188,7 @@ const AddAdminForm: React.FC<AddAdminFormProps> = ({
 
 
                 </FormContainer>
-                <div className="flex justify-end mt-4 gap-4">
+                <div className="mt-4 flex justify-end gap-4">
                     <Button type="button" onClick={() => handleClose()} disabled={formik.isSubmitting}>
                         Cancel
                     </Button>

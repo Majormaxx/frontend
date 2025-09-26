@@ -49,9 +49,9 @@ export const CustomConnectButton: React.FC<CustomConnectButtonProps> = ({
                   <button
                     className={`${
                       disabled
-                        ? "bg-berrylavender-500 text-berrylavender-700 cursor-not-allowed"
-                        : "bg-berrylavender-400 hover:bg-berrylavender-700 text-offWhite"
-                    } font-bold py-2 px-4 rounded`}
+                        ? "cursor-not-allowed bg-berrylavender-500 text-berrylavender-700"
+                        : "bg-berrylavender-400 text-offWhite hover:bg-berrylavender-700"
+                    } rounded px-4 py-2 font-bold`}
                     disabled={disabled}
                     onClick={openConnectModal}
                     type="button"
@@ -62,7 +62,7 @@ export const CustomConnectButton: React.FC<CustomConnectButtonProps> = ({
               }
               if (chain.unsupported) {
                 return (
-                  <button onClick={openChainModal} type="button" className="text-red-500 font-semibold">
+                  <button onClick={openChainModal} type="button" className="font-semibold text-red-500">
                     Wrong network
                   </button>
                 );

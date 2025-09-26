@@ -10,9 +10,9 @@ interface SideProps extends CommonProps {
 
 const Side = ({ children, content, ...rest }: SideProps) => {
     return (
-        <div className="grid lg:grid-cols-3 h-full">
+        <div className="grid h-full lg:grid-cols-3">
             <div
-                className="bg-no-repeat bg-cover py-6 px-16 flex-col justify-between hidden lg:flex"
+                className="hidden flex-col justify-between bg-cover bg-no-repeat px-16 py-6 lg:flex"
                 style={{
                     backgroundImage: `url('/img/others/auth-side-bg.jpg')`,
                 }}
@@ -26,7 +26,7 @@ const Side = ({ children, content, ...rest }: SideProps) => {
                             src="/img/avatars/thumb-10.jpg"
                         />
                         <div className="text-white">
-                            <div className="font-semibold text-base">
+                            <div className="text-base font-semibold">
                                 Brittany Hale
                             </div>
                             <span className="opacity-80">CTO, Onward</span>
@@ -43,8 +43,8 @@ const Side = ({ children, content, ...rest }: SideProps) => {
                     <span className="font-semibold">{`${APP_NAME}`}</span>{' '}
                 </span>
             </div>
-            <div className="col-span-2 flex flex-col justify-center items-center bg-white dark:bg-gray-800">
-                <div className="w-full xl:max-w-[450px] px-8 max-w-[380px]">
+            <div className="col-span-2 flex flex-col items-center justify-center bg-white dark:bg-gray-800">
+                <div className="w-full max-w-[380px] px-8 xl:max-w-[450px]">
                     <div className="mb-8">{content}</div>
                     {children
                         ? cloneElement(children as React.ReactElement, {

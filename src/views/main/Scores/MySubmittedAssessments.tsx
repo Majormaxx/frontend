@@ -59,7 +59,7 @@ const MySubmittedAssessments: React.FC = () => {
                             Back to Results
                         </Button>
                     </div>
-                    <div className="flex flex-col justify-start mt-4">
+                    <div className="mt-4 flex flex-col justify-start">
                         <h1>Round {selectedRound?.roundNumber}</h1>
                         <h5>My Submitted Assessments</h5>
                     </div>

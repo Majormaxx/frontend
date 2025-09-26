@@ -15,11 +15,11 @@ const Invite = () => {
   if (invitationToken) {
     return (
       <Navigate
-        to={`${!!token ?  memberSignUpPath : unAuthenticatedEntryPath}?invitationToken=${invitationToken}`}
+        to={`${token ?  memberSignUpPath : unAuthenticatedEntryPath}?invitationToken=${invitationToken}`}
         replace={true}
       />
     );
   }
-  return <Navigate to={!!token ? notRegisteredEntryPath : unAuthenticatedEntryPath} replace={true} />;
+  return <Navigate to={token ? notRegisteredEntryPath : unAuthenticatedEntryPath} replace={true} />;
 };
 export default Invite;

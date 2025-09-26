@@ -44,8 +44,8 @@ export const refreshCurrentRound = async (dispatch: Dispatch<any>, handleError: 
 
 export const refreshUser = async (dispatch: Dispatch<any>, handleError: (error: any) => void) => {
   try {
-    let response: any = await apiGetUser();
-    let user = response?.data || {};
+    const response: any = await apiGetUser();
+    const user = response?.data || {};
     if (user) {
       dispatch(
         setUser({

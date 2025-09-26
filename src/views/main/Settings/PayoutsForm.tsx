@@ -13,7 +13,7 @@ import { useChainService } from '@/services/ChainService'
 import ChainSelector from '@/components/collabberry/custom-components/ChainSelector'
 import RecognitionModeSelector from '@/components/collabberry/custom-components/RecognitionModeSelector'
 import { ethers } from 'ethers'
-import { hasMinterRole, isContract } from '@/services/ValidationService'
+import { RecognitionMode } from '@/@types/payouts'
 
 const validationSchema = Yup.object().shape({
     chain: Yup.string().required('Chain is required'),
@@ -21,61 +21,25 @@ const validationSchema = Yup.object().shape({
         .required('Safe Address is required')
         .test('is-address', 'Invalid address format', (value) =>
             ethers.isAddress(value)
-        )
-        .test(
-            'is-contract',
-            'Address is not a contract',
-            async function (value) {
-                const { chainId } = this.parent
-                if (!value || !chainId) return true
-                return isContract(value as string, chainId)
-            }
-        )
-        .test(
-            'has-minter-role',
-            'Address does not have the minter role',
-            async function (value) {
-                const { chainId, recognitionTokenAddress } = this.parent
-                if (!value || !chainId || !recognitionTokenAddress) return true
-                return hasMinterRole(
-                    value as string,
-                    recognitionTokenAddress,
-                    chainId
-                )
-            }
         ),
     stablecoinAddress: Yup.string()
         .required('Stablecoin Address is required')
         .test('is-address', 'Invalid address format', (value) =>
             ethers.isAddress(value)
-        )
-        .test(
-            'is-contract',
-            'Address is not a contract',
-            async function (value) {
-                const { chainId } = this.parent
-                if (!value || !chainId) return true
-                return isContract(value as string, chainId)
-            }
         ),
     recognitionTokenAddress: Yup.string()
         .required('Recognition Token Address is required')
         .test('is-address', 'Invalid address format', (value) =>
             ethers.isAddress(value)
-        )
-        .test(
-            'is-contract',
-            'Address is not a contract',
-            async function (value) {
-                const { chainId } = this.parent
-                if (!value || !chainId) return true
-                return isContract(value as string, chainId)
-            }
         ),
-    recognitionMode: Yup.string().required('Recognition Mode is required'),
+    recognitionMode: Yup.string().oneOf(['hours-based', 'discretionary'] as const).required('Recognition Mode is required'),
     chainId: Yup.number(),
 })
 
+/**
+ * Renders a form for configuring organization payout settings, including chain, Safe address, and token information.
+ * It handles form validation, submission, and displays success or error feedback to the user.
+ */
 const PayoutsForm = () => {
     const [dialogVisible, setDialogVisible] = useState(false)
     const [errorDialogVisible, setErrorDialogVisible] = useState(false)
@@ -90,17 +54,23 @@ const PayoutsForm = () => {
         safeAddress: organization?.safeAddress || '',
         stablecoinAddress: organization?.stablecoinAddress || '',
         recognitionTokenAddress: organization?.recognitionTokenAddress || '',
-        recognitionMode: organization?.recognitionMode || '',
+        recognitionMode: organization?.recognitionMode || 'discretionary' as RecognitionMode,
         chainId: organization?.chainId || 0,
     }
 
+    /**
+     * Handles the form submission, sending the updated settings to the API.
+     * It displays loading, success, or error dialogs based on the API response.
+     * @param values - The form values.
+     * @param setSubmitting - A function to set the form's submitting state.
+     */
     const onFormSubmit = async (
         values: {
             chain: string
             safeAddress: string
             stablecoinAddress: string
             recognitionTokenAddress: string
-            recognitionMode: string
+            recognitionMode: RecognitionMode
             chainId: number
         },
         setSubmitting: (isSubmitting: boolean) => void
@@ -112,7 +82,7 @@ const PayoutsForm = () => {
                 safeAddress: values.safeAddress,
                 stablecoinAddress: values.stablecoinAddress,
                 recognitionTokenAddress: values.recognitionTokenAddress,
-                recognitionMode: values.recognitionMode as any,
+                recognitionMode: values.recognitionMode,
                 chainId: values.chainId,
             }
             const result = await apiUpdateOrganizationSettings(data)
@@ -197,11 +167,20 @@ const PayoutsForm = () => {
                                 />
                             </FormItem>
                             <FormItem
+                                label="Recognition Mode"
+                                invalid={errors.recognitionMode && touched.recognitionMode}
+                                errorMessage={errors.recognitionMode}
+                            >
+                                <RecognitionModeSelector
+                                    value={values.recognitionMode}
+                                    onChange={(option) => {
+                                        setFieldValue('recognitionMode', option.value)
+                                    }}
+                                />
+                            </FormItem>
+                            <FormItem
                                 label="Stablecoin Address"
-                                invalid={
-                                    errors.stablecoinAddress &&
-                                    touched.stablecoinAddress
-                                }
+                                invalid={errors.stablecoinAddress && touched.stablecoinAddress}
                                 errorMessage={errors.stablecoinAddress}
                             >
                                 <Field
@@ -226,18 +205,6 @@ const PayoutsForm = () => {
                                     name="recognitionTokenAddress"
                                     placeholder="Enter Recognition Token Address"
                                     component={Input}
-                                />
-                            </FormItem>
-                            <FormItem
-                                label="Recognition Mode"
-                                invalid={errors.recognitionMode && touched.recognitionMode}
-                                errorMessage={errors.recognitionMode}
-                            >
-                                <RecognitionModeSelector
-                                    value={values.recognitionMode}
-                                    onChange={(option) => {
-                                        setFieldValue('recognitionMode', option.value)
-                                    }}
                                 />
                             </FormItem>
                             <FormItem>

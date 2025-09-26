@@ -11,8 +11,8 @@ export type ThemeConfiguratorProps = {
 
 const ThemeConfigurator = ({ callBackClose }: ThemeConfiguratorProps) => {
     return (
-        <div className="flex flex-col h-full justify-between">
-            <div className="flex flex-col gap-y-10 mb-6">
+        <div className="flex h-full flex-col justify-between">
+            <div className="mb-6 flex flex-col gap-y-10">
                 <div className="flex items-center justify-between">
                     <div>
                         <h6>Dark Mode</h6>

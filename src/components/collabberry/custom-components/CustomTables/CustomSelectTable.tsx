@@ -90,7 +90,7 @@ const CustomSelectTable = <T,>({
             // <span className="text-sm text-gray-500 font-semibold">
             //   Assessed ✅
             // </span>
-            <Tag className={`text-emerald-500 bg-emerald-50 border-0 h-6`}>
+            <Tag className={`h-6 border-0 bg-emerald-50 text-emerald-500`}>
               Assessed
             </Tag>
           ) : null;
@@ -207,7 +207,7 @@ const CustomSelectTable = <T,>({
         </TBody>
       </Table>
       {shouldShowPagination && (
-        <div className="flex items-center justify-between mt-4">
+        <div className="mt-4 flex items-center justify-between">
           <Pagination
             pageSize={table.getState().pagination.pageSize}
             currentPage={table.getState().pagination.pageIndex + 1}
@@ -228,7 +228,7 @@ const CustomSelectTable = <T,>({
           </div>
         </div>
       )}
-      <div className="flex justify-end mt-4">
+      <div className="mt-4 flex justify-end">
         <Button
           color="primary"
           disabled={

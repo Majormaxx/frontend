@@ -64,7 +64,7 @@ const MenuCollapse = (props: MenuCollapseProps) => {
             >
                 <span className="flex items-center">{label}</span>
                 <motion.span
-                    className="text-lg mt-1"
+                    className="mt-1 text-lg"
                     initial={{ transform: 'rotate(0deg)' }}
                     animate={{
                         transform: isExpanded

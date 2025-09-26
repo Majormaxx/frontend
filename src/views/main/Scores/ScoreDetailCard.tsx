@@ -13,8 +13,8 @@ interface ScoreCardProps {
 export const ScoreCard: React.FC<ScoreCardProps> = ({ title, score }) => {
     return (
         <Card className="bg-white">
-            <h6 className="font-semibold mb-4 text-sm text-gray-500">{title}</h6>
-            <div className="flex justify-start items-center gap-2">
+            <h6 className="mb-4 text-sm font-semibold text-gray-500">{title}</h6>
+            <div className="flex items-center justify-start gap-2">
                 <div>
                     <h1 className="font-bold text-gray-600">
                         {score.toFixed(1)}
@@ -46,8 +46,8 @@ export const ScoreDetailCard: React.FC<ScoreDetailProps> = ({
     onEdit,
 }) => {
     return (
-        <Card className="p-4 border rounded relative">
-            <div className="flex items-center absolute top-5 right-5 m-2 flex gap-2">
+        <Card className="relative rounded border p-4">
+            <div className="absolute right-5 top-5 m-2 flex items-center gap-2">
                 {/* {(workScore === 5 || cultureScore === 5) && (
                     <AnimatedRainbowBerrySvg />
 
@@ -66,7 +66,7 @@ export const ScoreDetailCard: React.FC<ScoreDetailProps> = ({
 
 
             <div className="flex flex-row gap-4">
-                <div className="flex flex-row items-center justify-start min-w-[120px]">
+                <div className="flex min-w-[120px] flex-row items-center justify-start">
                     <Avatar
                         className="mr-2 rounded-full"
                         src={contributor.profilePicture ?? placeholderIcon}
@@ -76,7 +76,7 @@ export const ScoreDetailCard: React.FC<ScoreDetailProps> = ({
                 <div className="grid grid-cols-2 gap-4">
                     <div>
                         <h3 className="text-sm font-semibold">Culture Impact</h3>
-                        <div className="flex flex-row gap-2 items-center">
+                        <div className="flex flex-row items-center gap-2">
                             <p className="text-2xl">{cultureScore.toFixed(1)}</p>
 
                             {cultureScore === 5 && (
@@ -89,7 +89,7 @@ export const ScoreDetailCard: React.FC<ScoreDetailProps> = ({
                     </div>
                     <div>
                         <h3 className="text-sm font-semibold">Work Contribution</h3>
-                        <div className="flex flex-row gap-2 items-center">
+                        <div className="flex flex-row items-center gap-2">
                             <p className="text-2xl">{workScore.toFixed(1)}</p>
 
                             {workScore === 5 && (
@@ -104,13 +104,13 @@ export const ScoreDetailCard: React.FC<ScoreDetailProps> = ({
             <div className="grid grid-cols-2 gap-4">
 
                 <div className="mt-4">
-                    <h3 className="font-semibold text-sm uppercase">Did well</h3>
+                    <h3 className="text-sm font-semibold uppercase">Did well</h3>
                     <p className="mt-1">{feedbackPositive || '-'}</p>
                 </div>
 
 
                 <div className="mt-4">
-                    <h3 className="font-semibold text-sm uppercase">Could Improve</h3>
+                    <h3 className="text-sm font-semibold uppercase">Could Improve</h3>
                     <p className="mt-1">{feedbackNegative || '-'}</p>
                 </div>
             </div>

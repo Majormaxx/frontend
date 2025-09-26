@@ -22,7 +22,7 @@ const FooterContent = () => {
   const openTermsAndConditions = () => setIsTermsAndConditionsOpen(true);
   const closeTermsAndConditions = () => setIsTermsAndConditionsOpen(false);
   return (
-    <div className="flex items-center justify-between flex-auto w-full">
+    <div className="flex w-full flex-auto items-center justify-between">
       {isPrivacyPolicyOpen && (
         <Dialog onClose={closePrivacyPolicy} isOpen={isPrivacyPolicyOpen}>
           <PrivacyPolicy />
@@ -54,7 +54,7 @@ const FooterContent = () => {
         >
           Terms & Conditions
         </a>
-        <span className="mx-2 text-muted"> | </span>
+        <span className="text-muted mx-2"> | </span>
         <a
           className="text-gray"
           href="/#"

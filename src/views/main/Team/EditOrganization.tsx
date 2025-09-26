@@ -79,7 +79,7 @@ const EditOrganizationForm: React.FC<EditOrganizationFormProps> = ({
   return (
     <>
       <FormContainer>
-        <h2 className="text-2xl font-bold mb-4 mt-4">
+        <h2 className="mb-4 mt-4 text-2xl font-bold">
           Edit Organization Details
         </h2>
         <FormItem label="Logo">
@@ -98,7 +98,7 @@ const EditOrganizationForm: React.FC<EditOrganizationFormProps> = ({
           />
         </FormItem>
       </FormContainer>
-      <div className="flex justify-end mt-4">
+      <div className="mt-4 flex justify-end">
         <Button
           type="submit"
           onClick={() => formik.handleSubmit()}

@@ -163,7 +163,7 @@ const MaterialContribution: React.FC = () => {
                 title="Minting Tokens..."
                 handleDialogClose={() => null}   >
             </LoadingDialog>
-            <Card className="w-full xl:w-3/4 mt-4">
+            <Card className="mt-4 w-full xl:w-3/4">
                 <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
                     {({ values, errors, touched }) => (
                         <Form>
@@ -188,7 +188,7 @@ const MaterialContribution: React.FC = () => {
                                                                         label="Contributor"
                                                                         invalid={userFeedback.invalid}
                                                                         errorMessage={userFeedback.errorMessage}
-                                                                        className="flex-1 w-full lg:w-2/3 mb-1"
+                                                                        className="mb-1 w-full flex-1 lg:w-2/3"
                                                                     >
                                                                         <Field name={`contributions[${index}].user`}>
                                                                             {({ field, form }: FieldProps) => {
@@ -211,7 +211,7 @@ const MaterialContribution: React.FC = () => {
                                                                                                 form.setFieldValue(field.name, selectedOption?.value)
                                                                                             }
                                                                                         />
-                                                                                        <Addon className="w-1/5 hidden md:flex min-w-[130px]">
+                                                                                        <Addon className="hidden w-1/5 min-w-[130px] md:flex">
                                                                                             {contributorsFromOrg.some(
                                                                                                 (orgContributor: any) => orgContributor.walletAddress === field.value
                                                                                             ) ? (
@@ -240,12 +240,12 @@ const MaterialContribution: React.FC = () => {
                                                                             }}
                                                                         </Field>
                                                                     </FormItem>
-                                                                    <div className="flex items-center gap-4 flex-row w-full lg:w-1/3 min-w-[230px]" >
+                                                                    <div className="flex w-full min-w-[230px] flex-row items-center gap-4 lg:w-1/3" >
                                                                         <FormItem
                                                                             label="Material Contribution"
                                                                             invalid={amountFeedback.invalid}
                                                                             errorMessage={amountFeedback.errorMessage}
-                                                                            className="w-3/4 mb-1"
+                                                                            className="mb-1 w-3/4"
                                                                         >
                                                                             <Field
                                                                                 name={`contributions[${index}].amount`}
@@ -255,7 +255,7 @@ const MaterialContribution: React.FC = () => {
                                                                                 component={Input}
                                                                             />
                                                                         </FormItem>
-                                                                        <div className="w-1/4 mt-6">
+                                                                        <div className="mt-6 w-1/4">
                                                                             <Button
                                                                                 shape="circle"
                                                                                 size="sm"
@@ -270,7 +270,7 @@ const MaterialContribution: React.FC = () => {
                                                                 </div>
 
                                                                 {contribution.user && contribution.amount && (
-                                                                    <div className="text-sm text-gray-500 mt-2">
+                                                                    <div className="mt-2 text-sm text-gray-500">
                                                                         For a material contribution of {`$${contribution.amount}`}, {contributorOptions.find(option => option.value === contribution.user)?.label.split(' - ')[0]} will receive {Number(contribution.amount) * materialWeight} Team Points.
                                                                     </div>
 
@@ -279,7 +279,7 @@ const MaterialContribution: React.FC = () => {
                                                         );
                                                     })}
                                                 <div className="flex flex-col items-end gap-4">
-                                                    <div className='flex flex-row items-center justify-start w-full mt-2'>
+                                                    <div className='mt-2 flex w-full flex-row items-center justify-start'>
                                                         <Button
                                                             type="button"
                                                             icon={<HiPlus className="text-berrylavender-500" />}

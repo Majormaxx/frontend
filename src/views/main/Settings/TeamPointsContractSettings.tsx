@@ -294,7 +294,7 @@ const TeamPointsContractSettings: React.FC = () => {
 
 
                                 </>
-                                <div className='text-sm mt-4 items-center text-gray-500 p-1 flex flex-row justify-end'>
+                                <div className='mt-4 flex flex-row items-center justify-end p-1 text-sm text-gray-500'>
                                     {/* <FiAlertTriangle className='mr-1'/> */}
                                     <p>This transaction will modify contract settings on chain and require gas fees.</p>
                                 </div>
@@ -302,7 +302,7 @@ const TeamPointsContractSettings: React.FC = () => {
                             </>
 
                         )}
-                        <div className="flex justify-end mt-2">
+                        <div className="mt-2 flex justify-end">
                             <Button
                                 type="submit"
                                 className="mx-2"
@@ -318,13 +318,13 @@ const TeamPointsContractSettings: React.FC = () => {
                 </Card>
             ) : (
                 loading ? (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                         <Skeleton height={108} />
                         <Skeleton height={108} />
                         <Skeleton height={108} />
                     </div>
                 ) : (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
 
                         <StatisticCard
                             value={

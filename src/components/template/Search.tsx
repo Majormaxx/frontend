@@ -151,12 +151,12 @@ const _Search = ({ className }: { className?: string }) => {
                 onRequestClose={handleSearchClose}
             >
                 <div>
-                    <div className="px-4 flex items-center justify-between border-b border-gray-200 dark:border-gray-600">
+                    <div className="flex items-center justify-between border-b border-gray-200 px-4 dark:border-gray-600">
                         <div className="flex items-center">
                             <HiOutlineSearch className="text-xl" />
                             <input
                                 ref={inputRef}
-                                className="ring-0 outline-none block w-full p-4 text-base bg-transparent text-gray-900 dark:text-gray-100"
+                                className="block w-full bg-transparent p-4 text-base text-gray-900 outline-none ring-0 dark:text-gray-100"
                                 placeholder="Search..."
                                 onChange={handleSearch}
                             />
@@ -165,7 +165,7 @@ const _Search = ({ className }: { className?: string }) => {
                             Esc
                         </Button>
                     </div>
-                    <div className="py-6 px-5 max-h-[550px] overflow-y-auto">
+                    <div className="max-h-[550px] overflow-y-auto px-5 py-6">
                         {searchResult.map((result) => (
                             <div key={result.title} className="mb-6">
                                 <h6 className="mb-3">{result.title}</h6>

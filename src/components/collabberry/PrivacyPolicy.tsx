@@ -3,7 +3,7 @@ import React from "react";
 const PrivacyPolicy: React.FC = () => {
   return (
     <>
-      <h5 className="text-2xl font-semibold mb-4">Privacy Policy</h5>
+      <h5 className="mb-4 text-2xl font-semibold">Privacy Policy</h5>
       <div className="max-h-96 overflow-y-auto">
         <p className="mb-4">
           Your privacy is important to us. It is Collabberry's policy to respect
@@ -11,7 +11,7 @@ const PrivacyPolicy: React.FC = () => {
           our website, http://collabberry.com, and other sites we own and
           operate.
         </p>
-        <h2 className="text-2xl font-semibold mb-2">
+        <h2 className="mb-2 text-2xl font-semibold">
           1. Information we collect
         </h2>
         <p className="mb-4">
@@ -19,7 +19,7 @@ const PrivacyPolicy: React.FC = () => {
           for example, to provide our services, to communicate with you, or to
           make our services better.
         </p>
-        <h2 className="text-2xl font-semibold mb-2">
+        <h2 className="mb-2 text-2xl font-semibold">
           2. How we use information
         </h2>
         <p className="mb-4">
@@ -32,18 +32,18 @@ const PrivacyPolicy: React.FC = () => {
           information relating to the website, and for marketing and promotional
           purposes.
         </p>
-        <h2 className="text-2xl font-semibold mb-2">3. Sharing information</h2>
+        <h2 className="mb-2 text-2xl font-semibold">3. Sharing information</h2>
         <p className="mb-4">
           We do not share your personal information with anyone except to comply
           with the law, develop our products, or protect our rights.
         </p>
-        <h2 className="text-2xl font-semibold mb-2">4. Security</h2>
+        <h2 className="mb-2 text-2xl font-semibold">4. Security</h2>
         <p className="mb-4">
           We take reasonable measures to help protect your personal information
           from loss, theft, misuse, and unauthorized access, disclosure,
           alteration, and destruction.
         </p>
-        <h2 className="text-2xl font-semibold mb-2">5. Contact us</h2>
+        <h2 className="mb-2 text-2xl font-semibold">5. Contact us</h2>
         <p className="mb-4">
           If you have any questions about this Privacy Policy, please contact us
           at support@collabberry.com.

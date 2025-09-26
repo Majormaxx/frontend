@@ -60,8 +60,8 @@ const AvatarUpload: React.FC<AvatarUploadProps> = ({ setFieldValue, field, value
                 <Avatar
                     size={80}
                     src={avatarImg as string}
-                    icon={<HiOutlinePlus className="w-full h-full" />}
-                    className={`bg-transparent ${avatarImg ? 'border-2 border-dashed border-transparent' : 'border-2 border-dashed border-gray-300'} w-20 h-20 flex items-center justify-center`}
+                    icon={<HiOutlinePlus className="h-full w-full" />}
+                    className={`bg-transparent ${avatarImg ? 'border-2 border-dashed border-transparent' : 'border-2 border-dashed border-gray-300'} flex h-20 w-20 items-center justify-center`}
                 />
             </Upload>
         </div>

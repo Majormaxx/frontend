@@ -1,5 +1,5 @@
 import CustomTableWithSorting from "@/components/collabberry/custom-components/CustomTables/CustomTableWithSorting";
-import { Contributor } from "@/models/Organization.model";
+import { Contributor } from '@/models/organization.model';
 import { ColumnDef } from "@tanstack/react-table";
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -281,7 +281,7 @@ const Team: React.FC = () => {
         return value ? <div className="flex flex-col">
           <div>{value}</div>
           <div>
-            {data?.isContractAdmin && <Tag className="bg-sky-100 text-sky-600 dark:bg-sky-500/20 dark:text-sky-100 rounded-md border-0 p-1">Admin</Tag>
+            {data?.isContractAdmin && <Tag className="rounded-md border-0 bg-sky-100 p-1 text-sky-600 dark:bg-sky-500/20 dark:text-sky-100">Admin</Tag>
             }
           </div>
 
@@ -417,8 +417,8 @@ const Team: React.FC = () => {
         <h1>Team</h1>
       </div>
 
-      <div className="mb-4 flex justify-between items-start md:items-end flex-col md:flex-row gap-2 md:gap-0">
-        <div className="flex flex-col md:flex-row gap-2">
+      <div className="mb-4 flex flex-col items-start justify-between gap-2 md:flex-row md:items-end md:gap-0">
+        <div className="flex flex-col gap-2 md:flex-row">
           <OrganizationCard
             organization={organization}
             onEdit={openEditDialog}
@@ -480,7 +480,7 @@ const Team: React.FC = () => {
           )}
         </div>
         {isAdmin && (
-          <div className="flex gap-2 flex-row mx-2">
+          <div className="mx-2 flex flex-row gap-2">
 
             <Tooltip title="Admin Management">
               <Button size="sm"

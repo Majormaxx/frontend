@@ -18,7 +18,7 @@ const MediaSkeleton = (props: MediaSkeletonProps) => {
                     <Skeleton variant="circle" {...avatarProps} />
                 </div>
             )}
-            <div className="flex flex-col gap-4 w-full">
+            <div className="flex w-full flex-col gap-4">
                 <Skeleton width="40%" {...titleProps} />
                 <Skeleton width="20%" {...textProps} />
             </div>

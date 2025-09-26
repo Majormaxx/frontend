@@ -56,14 +56,14 @@ const MyScores: React.FC = () => {
               Back to Results
             </Button>
           </div>
-          <div className="flex flex-col justify-start mt-4">
+          <div className="mt-4 flex flex-col justify-start">
             <h1>Round {scores?.roundName}</h1>
             {/* <h5>My Results</h5> */}
           </div>
           <div className="mt-4">
             {
               assessments.length ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
                   <ScoreCard
                     title="Total Score"
                     score={scores?.totalScore || (scores?.totalCultureScore + scores?.totalWorkScore) / 2}

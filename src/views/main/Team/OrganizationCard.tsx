@@ -30,18 +30,18 @@ const OrganizationCard: React.FC<OrganizationCardProps> = ({
     <div className="flex items-center justify-start">
       {
         organization?.logo ? (
-          <Avatar className="mr-2 rounded-full h-24 w-24" src={organization.logo} />
+          <Avatar className="mr-2 h-24 w-24 rounded-full" src={organization.logo} />
         ) : (
           <Avatar
             src={orgPlaceholderIcon}
             alt={organization.name}
-            className="mr-2 rounded-full h-24 w-24"
+            className="mr-2 h-24 w-24 rounded-full"
           />
         )
       }
      
      <div className="flex flex-col gap-2">
-     <div className="organization-name text-2xl mr-2 text-gray-900">
+     <div className="organization-name mr-2 text-2xl text-gray-900">
             {organization.name}
           </div>
           {isAdmin && (
