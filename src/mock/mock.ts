@@ -18,13 +18,17 @@ export function mockServer({ environment = 'test' }) {
         routes() {
             this.urlPrefix = ''
             this.namespace = ''
-            this.passthrough((request) => {
-                const isExternal = request.url.startsWith('http')
-                return isExternal
-            })
-            this.passthrough()
 
+            // Define our mock API routes first
             authFakeApi(this, apiPrefix)
+
+            // Passthrough external requests (but not our local API calls)
+            this.passthrough((request) => {
+                // Allow external requests (CDNs, analytics, etc.) but intercept our API
+                const isExternalService = request.url.startsWith('http') &&
+                                         !request.url.includes(window.location.host)
+                return isExternalService
+            })
         },
     })
 }

@@ -12,8 +12,13 @@ export type AppConfig = {
   enableMock: boolean;
 };
 
+// Define enableMock first so we can use it in apiPrefix
+const enableMock = true;
+
 const appConfig: AppConfig = {
-  apiPrefix: `${environment.apiUrl}/api`,
+  // Use relative path for mocks so MirageJS can intercept requests
+  // Use full URL for production backend
+  apiPrefix: enableMock ? "/api" : `${environment.apiUrl}/api`,
   authenticatedEntryPath: "/dashboard",
   unAuthenticatedEntryPath: "/sign-in",
   notRegisteredEntryPath: "/sign-up",
@@ -21,7 +26,7 @@ const appConfig: AppConfig = {
   memberSignUpPath: "/member-sign-up",
   tourPath: "/",
   locale: "en",
-  enableMock: true,
+  enableMock,
 };
 
 export default appConfig;
