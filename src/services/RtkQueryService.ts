@@ -32,6 +32,12 @@ const axiosBaseQuery =
 const RtkQueryService = createApi({
     reducerPath: 'rtkApi',
     baseQuery: axiosBaseQuery(),
+    tagTypes: [
+        'PayoutRounds',
+        'PayoutPreview',
+        'PayoutStatus',
+        'PayoutHistory'
+    ],
     endpoints: () => ({}),
 })
 

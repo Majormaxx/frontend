@@ -1,18 +1,28 @@
 import React from 'react';
-import SettingsForm from '@/components/settings/SettingsForm';
-import Container from '@/components/shared/Container';
+import { Card, Alert } from '@/components/ui';
+import { HiInformationCircle } from 'react-icons/hi';
 
 /**
- * Renders the admin settings view, providing a container for the SettingsForm.
+ * Renders the admin settings view
  */
 const AdminSettings = () => {
     return (
-        <Container>
-            <h4>Admin Settings</h4>
-            <div className="mt-4">
-                <SettingsForm />
+        <div>
+            <div className="mb-6">
+                <h3 className="mb-2">Admin Settings</h3>
+                <p className="text-gray-600">
+                    Advanced administrative settings and configurations.
+                </p>
             </div>
-        </Container>
+
+            <Card className="p-8 text-center">
+                <HiInformationCircle className="mx-auto mb-4 text-4xl text-gray-400" />
+                <h4 className="mb-2 text-gray-600">Admin Settings</h4>
+                <p className="text-sm text-gray-500">
+                    Additional admin settings will be available here in future updates.
+                </p>
+            </Card>
+        </div>
     );
 };
 
