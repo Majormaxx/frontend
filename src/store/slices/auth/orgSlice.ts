@@ -17,6 +17,12 @@ export type OrgState = {
   nextRoundDate?: string;
   roundsActivated?: boolean;
   contributors?: Contributor[];
+  safeAddress?: string;
+  stablecoinAddress?: string;
+  recognitionTokenAddress?: string;
+  recognitionMode?: 'hours-based' | 'discretionary';
+  chain?: string;
+  chainId?: number;
 };
 
 const initialState: OrgState = {
@@ -34,6 +40,12 @@ const initialState: OrgState = {
   contributors: [],
   roundsActivated: false,
   teamPointsContractAddress: "",
+  safeAddress: "",
+  stablecoinAddress: "",
+  recognitionTokenAddress: "",
+  recognitionMode: undefined,
+  chain: "",
+  chainId: undefined,
 };
 
 const orgSlice = createSlice({
@@ -56,6 +68,12 @@ const orgSlice = createSlice({
       state.totalDistributedFiat = initialState.totalDistributedFiat;
       state.totalDistributedTP = initialState.totalDistributedTP;
       state.teamPointsContractAddress = initialState.teamPointsContractAddress;
+      state.safeAddress = initialState.safeAddress;
+      state.stablecoinAddress = initialState.stablecoinAddress;
+      state.recognitionTokenAddress = initialState.recognitionTokenAddress;
+      state.recognitionMode = initialState.recognitionMode;
+      state.chain = initialState.chain;
+      state.chainId = initialState.chainId;
     },
     setOrganization(state, action: PayloadAction<OrgState>) {
       state.logo = action.payload?.logo;
@@ -73,6 +91,12 @@ const orgSlice = createSlice({
       state.totalDistributedFiat = action.payload?.totalDistributedFiat;
       state.totalDistributedTP = action.payload?.totalDistributedTP;
       state.teamPointsContractAddress = action.payload?.teamPointsContractAddress;
+      state.safeAddress = action.payload?.safeAddress;
+      state.stablecoinAddress = action.payload?.stablecoinAddress;
+      state.recognitionTokenAddress = action.payload?.recognitionTokenAddress;
+      state.recognitionMode = action.payload?.recognitionMode;
+      state.chain = action.payload?.chain;
+      state.chainId = action.payload?.chainId;
     },
   },
 });

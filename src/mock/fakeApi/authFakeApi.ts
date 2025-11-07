@@ -104,7 +104,6 @@ export default function authFakeApi(server: Server, apiPrefix: string) {
     })
 
     server.get(`${apiPrefix}/users/me`, () => {
-        // Return mock user data for wallet authentication
         return {
             data: {
                 id: 'mock-user-1',
@@ -113,14 +112,10 @@ export default function authFakeApi(server: Server, apiPrefix: string) {
                 walletAddress: '0x1234567890123456789012345678901234567890',
                 organization: {
                     id: 'mock-org-1',
-                    name: 'Mock Organization',
-                    safeAddress: '',
-                    stablecoinAddress: '',
-                    recognitionTokenAddress: '',
-                    recognitionMode: 'hours-based',
-                    chain: 'arbitrumSepolia',
-                    chainId: 421614
+                    name: 'Test Organization',
+                    logo: '/img/avatars/thumb-1.jpg'
                 },
+                isAdmin: true,
                 isMinter: true,
                 profilePicture: '/img/avatars/thumb-1.jpg'
             }
@@ -153,23 +148,14 @@ export default function authFakeApi(server: Server, apiPrefix: string) {
 
         console.log('Parsed user data:', userData)
 
-        // Mock successful profile update
         return {
             data: {
                 id: 'mock-user-1',
                 walletAddress: '0x1234567890123456789012345678901234567890',
                 ...userData,
-                organization: {
-                    id: 'mock-org-1',
-                    name: 'Mock Organization',
-                    safeAddress: '',
-                    stablecoinAddress: '',
-                    recognitionTokenAddress: '',
-                    recognitionMode: 'hours-based',
-                    chain: 'arbitrumSepolia',
-                    chainId: 421614
-                },
-                isMinter: true
+                organization: null,
+                isMinter: false,
+                isAdmin: false
             }
         }
     })

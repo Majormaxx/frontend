@@ -2,13 +2,14 @@ import Tabs from '@/components/ui/Tabs'
 import CompensationSettings from './CompensationSettings'
 import TeamPointsContractSettings from './TeamPointsContractSettings'
 import Payouts from './Payouts'
-import useAuth from '@/utils/hooks/useAuth'
 import AdminSettings from './AdminSettings'
+import { useSelector } from 'react-redux'
+import { RootState } from '@/store'
 
 const { TabNav, TabList, TabContent } = Tabs
 
 const Settings = () => {
-    const { user } = useAuth()
+    const { isMinter } = useSelector((state: RootState) => state.auth.user)
 
     return (
         <Tabs defaultValue="compensation">
@@ -16,7 +17,7 @@ const Settings = () => {
                 <TabNav value="compensation">Compensation</TabNav>
                 <TabNav value="teamPoints">Team Points Contract</TabNav>
                 <TabNav value="payouts">Payouts</TabNav>
-                {user.isMinter && <TabNav value="admin">Admin Settings</TabNav>}
+                {isMinter && <TabNav value="admin">Admin Settings</TabNav>}
             </TabList>
             <div className="p-4">
                 <TabContent value="compensation">

@@ -2,8 +2,13 @@ import { createServer } from 'miragejs'
 import appConfig from '@/configs/app.config'
 
 import { signInUserData } from './data/authData'
+import {
+    mockPayoutRounds,
+    mockRecipients,
+    mockPayouts
+} from './data/payoutData'
 
-import { authFakeApi } from './fakeApi'
+import { authFakeApi, payoutFakeApi, orgFakeApi } from './fakeApi'
 
 const { apiPrefix } = appConfig
 
@@ -13,6 +18,9 @@ export function mockServer({ environment = 'test' }) {
         seeds(server) {
             server.db.loadData({
                 signInUserData,
+                payoutRounds: mockPayoutRounds,
+                payoutRecipients: mockRecipients,
+                payouts: mockPayouts,
             })
         },
         routes() {
@@ -21,6 +29,8 @@ export function mockServer({ environment = 'test' }) {
 
             // Define our mock API routes first
             authFakeApi(this, apiPrefix)
+            orgFakeApi(this, apiPrefix)
+            payoutFakeApi(this, apiPrefix)
 
             // Passthrough external requests (but not our local API calls)
             this.passthrough((request) => {

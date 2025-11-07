@@ -1,10 +1,10 @@
 import {FormItem,FormContainer,Input, Button, Alert, Spinner,} from '@/components/ui'
-import { apiUpdateOrganizationSettings } from '@/services/OrgService'
+import { apiUpdateOrganizationSettings, apiGetOrganizationById } from '@/services/OrgService'
 import { Field, Form, Formik } from 'formik'
 import { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import * as Yup from 'yup'
-import { RootState } from '@/store'
+import { RootState, setOrganization } from '@/store'
 import { OrganizationData } from '@/@types/auth'
 import SuccessDialog from '@/components/collabberry/custom-components/TransactionSuccessDialog'
 import ErrorDialog from '@/components/collabberry/custom-components/TransactionErrorDialog'
@@ -41,6 +41,7 @@ const validationSchema = Yup.object().shape({
  * It handles form validation, submission, and displays success or error feedback to the user.
  */
 const PayoutsForm = () => {
+    const dispatch = useDispatch()
     const [dialogVisible, setDialogVisible] = useState(false)
     const [errorDialogVisible, setErrorDialogVisible] = useState(false)
     const [loadingDialog, setLoadingDialog] = useState(false)
@@ -76,6 +77,8 @@ const PayoutsForm = () => {
         setSubmitting: (isSubmitting: boolean) => void
     ) => {
         setLoadingDialog(true)
+        console.log('[PayoutsForm] Form submitted with values:', values)
+        console.log('[PayoutsForm] Current organization ID:', organization?.id)
         try {
             const data: Partial<OrganizationData> = {
                 chain: values.chain as 'arbitrum' | 'sepolia',
@@ -85,14 +88,30 @@ const PayoutsForm = () => {
                 recognitionMode: values.recognitionMode,
                 chainId: values.chainId,
             }
+            console.log('[PayoutsForm] Calling apiUpdateOrganizationSettings with:', data)
             const result = await apiUpdateOrganizationSettings(data)
+            console.log('[PayoutsForm] apiUpdateOrganizationSettings result:', result)
             if (result.status < 300) {
+                if (organization?.id) {
+                    console.log('[PayoutsForm] Fetching organization by ID:', organization.id)
+                    const orgResponse = await apiGetOrganizationById(organization.id)
+                    console.log('[PayoutsForm] apiGetOrganizationById response:', orgResponse)
+                    if (orgResponse?.data) {
+                        console.log('[PayoutsForm] Dispatching setOrganization with:', orgResponse.data)
+                        dispatch(setOrganization({
+                            ...orgResponse.data,
+                            logo: orgResponse.data.logo,
+                        }))
+                    }
+                }
                 setDialogVisible(true)
             } else {
+                console.error('[PayoutsForm] Update failed with status:', result.status)
                 setErrorMessage('Failed to update settings.')
                 setErrorDialogVisible(true)
             }
         } catch (error) {
+            console.error('[PayoutsForm] Error occurred:', error)
             setErrorMessage('An error occurred.')
             setErrorDialogVisible(true)
         } finally {

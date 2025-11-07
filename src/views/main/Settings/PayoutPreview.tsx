@@ -17,7 +17,7 @@ import {
   useProposePayoutMutation 
 } from '@/services/PayoutApiService';
 import { PayoutRecipient, TokenType } from '@/@types/safe-payouts';
-import { HiCurrencyDollar, HiCash, HiExternalLink, HiExclamationTriangle } from 'react-icons/hi';
+import { HiCurrencyDollar, HiCash, HiExternalLink, HiExclamation } from 'react-icons/hi';
 import { FiUsers, FiLayers } from 'react-icons/fi';
 import CustomTableWithSorting from '@/components/collabberry/custom-components/CustomTables/CustomTableWithSorting';
 import { ColumnDef } from '@tanstack/react-table';
@@ -136,7 +136,7 @@ const PayoutPreview: React.FC<PayoutPreviewProps> = ({ roundId, onClose }) => {
         <Alert type="warning" showIcon className="mb-6">
           <div>
             <h4 className="flex items-center gap-2">
-              <HiExclamationTriangle />
+              <HiExclamation />
               Validation Warnings
             </h4>
             <ul className="mt-2 list-disc list-inside">

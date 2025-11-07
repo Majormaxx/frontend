@@ -60,15 +60,25 @@ const _deployTeamPoints = async (ethersSigner: ethers.JsonRpcSigner | undefined,
             chainId === SupportedChainId.Celo
                 ? environment?.teamPointsFactoryAddressCelo
                 : environment?.teamPointsFactoryAddress;
+
+        if (!factoryAddress) {
+            return {
+                message: 'Factory address not configured for this chain',
+                status: ContractResponseStatus.Failed,
+            };
+        }
+
         const symbol = generateSymbol(orgName);
         const trimmedOrgName = orgName.trim();
         const contract = new ethers.Contract(factoryAddress, teamPointsFactoryAbi, ethersSigner);
+
         const res = await contract.deployTeamPoints(trimmedOrgName + "TP", symbol);
         const tx = await res.wait();
+
         const event = getEvent(tx.logs, 'TeamPointsCreated');
         if (!event) {
             return {
-                message: DEFAULT_ERROR_MESSAGE,
+                message: 'Contract deployment failed - TeamPointsCreated event not found',
                 status: ContractResponseStatus.Failed,
             }
         }
@@ -83,13 +93,14 @@ const _deployTeamPoints = async (ethersSigner: ethers.JsonRpcSigner | undefined,
             message: 'Success',
             status: ContractResponseStatus.Success,
         };
-    } catch (error) {
-        console.error(error);
+    } catch (error: any) {
+        console.error('Error deploying Team Points:', error);
+        const errorMessage = error?.reason || error?.message || DEFAULT_ERROR_MESSAGE;
+        return {
+            message: errorMessage,
+            status: ContractResponseStatus.Failed,
+        };
     }
-    return {
-        message: DEFAULT_ERROR_MESSAGE,
-        status: ContractResponseStatus.Failed,
-    };
 };
 
 

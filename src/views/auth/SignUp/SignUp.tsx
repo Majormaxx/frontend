@@ -209,13 +209,12 @@ const SignUp = () => {
         }
       }
       formik.setSubmitting(false);
+      return true;
     } catch (error: any) {
       handleError(error);
       formik.setSubmitting(false);
       return false;
     }
-    await formik.validateForm();
-    return isStepValid;
   };
 
   const createOrganization = async () => {
@@ -301,6 +300,7 @@ const SignUp = () => {
               logo: true,
             },
           });
+          return true;
         } catch (error: any) {
           setDialogOpen(false);
           handleError(error);
@@ -319,10 +319,6 @@ const SignUp = () => {
       formik.setSubmitting(false);
       return false;
     }
-
-
-    await formik.validateForm();
-    return isStepValid;
   };
 
   const createAgreement = async () => {
@@ -405,14 +401,14 @@ const SignUp = () => {
             responsibilities: true,
           },
         });
+        return true;
       } catch (error) {
         console.error("Error creating agreement:", error);
         formik.setSubmitting(false);
+        return false;
       }
     }
-
-    await formik.validateForm();
-    return isStepValid;
+    return false;
   };
 
   const handleSkipAgreement = () => {

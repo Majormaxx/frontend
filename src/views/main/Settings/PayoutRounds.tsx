@@ -173,9 +173,15 @@ const PayoutRounds: React.FC = () => {
   const rounds = roundsData?.rounds || [];
 
   // Check if Safe configuration is complete
-  const isSafeConfigured = organization?.safeAddress && 
-                          organization?.stablecoinAddress && 
+  const isSafeConfigured = organization?.safeAddress &&
+                          organization?.stablecoinAddress &&
                           organization?.recognitionTokenAddress;
+
+  console.log('[PayoutRounds] Organization state:', organization);
+  console.log('[PayoutRounds] isSafeConfigured:', isSafeConfigured);
+  console.log('[PayoutRounds] safeAddress:', organization?.safeAddress);
+  console.log('[PayoutRounds] stablecoinAddress:', organization?.stablecoinAddress);
+  console.log('[PayoutRounds] recognitionTokenAddress:', organization?.recognitionTokenAddress);
 
   if (!isSafeConfigured) {
     return (
